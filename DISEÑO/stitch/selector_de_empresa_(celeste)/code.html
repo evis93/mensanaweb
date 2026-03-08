@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>mensana - seleccionar centro</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Manrope -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#43b9e5",
+              "background-light": "#f0f9ff",
+              "background-dark": "#0f172a",
+              "border-soft": "#e2e8f0",
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.5rem",
+              "lg": "1rem",
+              "xl": "1.5rem",
+              "full": "9999px"
+            },
+          },
+        },
+      }</script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .wellness-gradient {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        .soft-shadow {
+            box-shadow: 0 10px 25px -5px rgba(67, 185, 229, 0.1), 0 8px 10px -6px rgba(67, 185, 229, 0.05);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#121616] font-display min-h-screen">
+<div class="wellness-gradient min-h-screen flex flex-col items-center px-6 py-12 md:py-20">
+<!-- Header / Logo Section -->
+<header class="w-full max-w-md mb-12 text-center">
+<h1 class="text-primary text-2xl font-bold tracking-tight lowercase mb-2">mensana</h1>
+<div class="h-1 w-8 bg-primary/20 mx-auto rounded-full"></div>
+</header>
+<!-- Main Selection Container -->
+<main class="w-full max-w-md space-y-8">
+<!-- Greeting -->
+<div class="text-center space-y-2">
+<h2 class="text-2xl md:text-3xl font-semibold text-[#121616] leading-tight tracking-tight lowercase">
+                    hola, ¿a qué centro deseas ingresar?
+                </h2>
+<p class="text-[#6a8180] text-sm font-normal lowercase tracking-wide">
+                    selecciona el espacio donde quieres trabajar hoy
+                </p>
+</div>
+<!-- List of Centers -->
+<div class="space-y-4">
+<!-- Center Item 1 -->
+<button class="w-full group relative bg-white dark:bg-zinc-900 p-5 rounded-lg soft-shadow flex items-center gap-5 border border-transparent hover:border-primary/30 transition-all duration-300 text-left">
+<div class="relative shrink-0">
+<div class="size-16 rounded-full overflow-hidden border border-border-soft bg-zinc-50 flex items-center justify-center">
+<img alt="centro de bienestar equilibrium" class="w-full h-full object-cover" data-alt="Modern minimalist wellness center logo showing a lotus flower" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-SCXWCInovu0KtfyHFoPTjy5sF6pI3mvRLFthlc9o6ynrw1Q6j0LnDpJU4jDGH0La6jC0gdW4NoFFCLz7TU_JoWm5JAn9btJORhZEhLIBnEuzH1z0EA8R7QfWnhG6kWsRk4xK58Nf91l_y2j5xD1hPgV9g1A8L__okRl386NM2_3OW91G3cr-KOpN5zcbESPmQoMn6QHDMi2J1vHNxjXYvboAZl9z12sgUsLQ4HSsjkUblgAGIYYekkAT51JQryeC2CnXUFqUnoXk"/>
+</div>
+<div class="absolute -bottom-1 -right-1 size-5 bg-primary rounded-full border-2 border-white flex items-center justify-center">
+<span class="material-symbols-outlined text-[12px] text-white font-bold">check</span>
+</div>
+</div>
+<div class="flex-1 overflow-hidden">
+<h3 class="text-[#121616] dark:text-zinc-100 font-semibold text-lg leading-tight lowercase truncate">
+                            centro de bienestar equilibrium
+                        </h3>
+<p class="text-[#6a8180] text-sm lowercase mt-0.5">profesional de salud</p>
+</div>
+<div class="text-[#6a8180] group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</button>
+<!-- Center Item 2 -->
+<button class="w-full group relative bg-white dark:bg-zinc-900 p-5 rounded-lg soft-shadow flex items-center gap-5 border border-transparent hover:border-primary/30 transition-all duration-300 text-left">
+<div class="shrink-0">
+<div class="size-16 rounded-full overflow-hidden border border-border-soft bg-zinc-50 flex items-center justify-center">
+<img alt="mensana matriz" class="w-full h-full object-cover" data-alt="Abstract corporate headquarters architectural detail with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCS0UPXNeArQlD_v7J26iLkiGF2yQUh_uPFd_rncCyFPNxJkU4oDRj0oYELQcxX6zU3LgbJg34aSQvCmOiRbBfw3v8tkjTNolB_OiEw8zojk8grOmBZxrX_Cs5dyeJtQ45_VITSUUu6ldxJW4WnEU6at0t18kBCDkswY4gIaDuqF6-fa_XmyXGDY20rHEhhI3l5KKAmLFxs9JpQxJlmejyWIIPnG0Hwihg_ZjbB4Km0apBhFu2FSRpayYqBaABaHBzLMzP8efdjzaWL"/>
+</div>
+</div>
+<div class="flex-1 overflow-hidden">
+<h3 class="text-[#121616] dark:text-zinc-100 font-semibold text-lg leading-tight lowercase truncate">
+                            mensana matriz
+                        </h3>
+<p class="text-[#6a8180] text-sm lowercase mt-0.5">administrador general</p>
+</div>
+<div class="text-[#6a8180] group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</button>
+<!-- Center Item 3 -->
+<button class="w-full group relative bg-white dark:bg-zinc-900 p-5 rounded-lg soft-shadow flex items-center gap-5 border border-transparent hover:border-primary/30 transition-all duration-300 text-left">
+<div class="shrink-0">
+<div class="size-16 rounded-full overflow-hidden border border-border-soft bg-zinc-50 flex items-center justify-center">
+<img alt="clínica del sol" class="w-full h-full object-cover" data-alt="Warm sunlight through a window in a clean medical space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtlVkT3NIjjQMxDxWkTHGnHj_T_gx0sC03n5Ymzqku4k4hxbFmyNspc4BzbCUFQQOl5peCeraSyJ1xW8v3-z9vxlE00knNJ8JH0o1e-DX6ZaUlENaYhHBJ7loO0VNcr_MS58RCGEkH5ss9EdwXcyQSynmWE2aDlxGiA7j-JcqqoicdjHa1Lxifc7Rq6g_xHk5Ki5Fen1adDjRgx2LfNNrgcs10O8qk6XxXSqyr2qfOVZKhMRGP2zGsHyck1qYYp9ACrJY0iv0aNzrs"/>
+</div>
+</div>
+<div class="flex-1 overflow-hidden">
+<h3 class="text-[#121616] dark:text-zinc-100 font-semibold text-lg leading-tight lowercase truncate">
+                            clínica del sol
+                        </h3>
+<p class="text-[#6a8180] text-sm lowercase mt-0.5">especialista externo</p>
+</div>
+<div class="text-[#6a8180] group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</button>
+<!-- Add New Center (Subtle Option) -->
+<button class="w-full group p-5 rounded-lg border-2 border-dashed border-[#E4E7ED] hover:border-primary/30 transition-all duration-300 flex items-center justify-center gap-3">
+<span class="material-symbols-outlined text-primary/60">add_circle</span>
+<span class="text-[#6a8180] font-medium lowercase">vincular otro centro</span>
+</button>
+</div>
+<!-- Bottom Actions -->
+<footer class="pt-12 text-center space-y-6">
+<a class="inline-block text-primary font-semibold text-sm tracking-wide lowercase hover:underline underline-offset-4 decoration-primary/30 transition-all" href="#">
+                    cambiar a modo consultante
+                </a>
+<div class="pt-8 flex items-center justify-center gap-8">
+<button class="flex flex-col items-center gap-1 group">
+<div class="size-10 rounded-full bg-white flex items-center justify-center soft-shadow text-[#6a8180] group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</div>
+<span class="text-[10px] text-[#6a8180] font-medium uppercase tracking-widest">ajustes</span>
+</button>
+<button class="flex flex-col items-center gap-1 group">
+<div class="size-10 rounded-full bg-white flex items-center justify-center soft-shadow text-[#6a8180] group-hover:text-red-400 transition-colors">
+<span class="material-symbols-outlined">logout</span>
+</div>
+<span class="text-[10px] text-[#6a8180] font-medium uppercase tracking-widest">salir</span>
+</button>
+</div>
+</footer>
+</main>
+<!-- Bottom Floating Nav Bar (Mobile View Inspiration) -->
+<nav class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-white/80 backdrop-blur-md px-6 py-3 rounded-full border border-white/50 soft-shadow flex items-center gap-8 md:hidden">
+<a class="text-primary" href="#">
+<span class="material-symbols-outlined">home</span>
+</a>
+<a class="text-[#6a8180]" href="#">
+<span class="material-symbols-outlined">business_center</span>
+</a>
+<a class="text-[#6a8180]" href="#">
+<span class="material-symbols-outlined">person</span>
+</a>
+</nav>
+</div>
+</body></html>

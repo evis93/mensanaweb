@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>mensana - bienestar integral</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "brand-blue": "#49c5e8",
+                        "brand-dark-blue": "#3298db",
+                        "brand-cyan": "#49c5e8",
+                        "brand-light": "#f1faff",
+                        "brand-soft-blue": "#e1f5fe",
+                    },
+                    fontFamily: {
+                        "sans": ["Quicksand", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "2xl": "2.2rem",
+                        "3xl": "2.8rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }</script>
+<style type="text/tailwindcss">:root {
+            --bg-gradient-start: #f8fbff;
+            --bg-gradient-end: #e1f5fe;
+            --header-gradient-start: #3298db;
+            --header-gradient-end: #49c5e8;
+        }
+        body {
+            font-family: 'Quicksand', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            min-height: 100dvh;
+            background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+        }
+        .blue-gradient {
+            background: linear-gradient(135deg, var(--header-gradient-start) 0%, var(--header-gradient-end) 100%);
+        }
+        .glass-card-minimal {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(4px);
+        }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="text-slate-800 dark:text-white transition-colors duration-300">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<header class="flex items-center bg-transparent px-6 pt-6 pb-2 justify-between z-10">
+<div class="flex size-9 shrink-0 items-center justify-center rounded-full bg-white shadow-sm text-brand-blue">
+<span class="material-symbols-outlined text-[22px] fill-1">spa</span>
+</div>
+<h1 class="dark:text-white text-2xl font-bold leading-tight flex-1 text-center pr-9 lowercase tracking-tight text-brand-blue">
+                mensana
+            </h1>
+</header>
+<main class="flex-1 flex flex-col px-6">
+<div class="mt-6 mb-10 relative">
+<div class="w-full h-32 rounded-[2.5rem] overflow-hidden relative shadow-lg shadow-brand-blue/15">
+<div class="absolute inset-0 blue-gradient"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="glass-card-minimal py-2.5 px-6 rounded-full max-w-[90%] text-center">
+<p class="text-xs font-semibold text-brand-dark-blue lowercase">
+                                tu camino hacia el bienestar integral comienza aquí
+                            </p>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center mb-10">
+<h2 class="text-2xl font-bold tracking-tight mb-2 text-slate-900 dark:text-white lowercase">bienvenido a mensana</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium leading-relaxed max-w-[280px] mx-auto lowercase">
+                    elegí cómo querés interactuar con nuestra comunidad.
+                </p>
+</div>
+<div class="flex flex-col gap-4 max-w-[480px] mx-auto w-full mb-12">
+<button class="group flex flex-row items-center justify-between p-5 rounded-3xl blue-gradient text-white shadow-xl shadow-brand-blue/25 active:scale-[0.97] transition-all duration-200">
+<div class="flex items-center gap-4">
+<div class="bg-white/25 p-2.5 rounded-2xl group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-2xl">favorite</span>
+</div>
+<div class="text-left">
+<span class="block text-base font-bold lowercase">buscá tu bienestar</span>
+<span class="block text-xs opacity-90 font-medium lowercase">profesionales y espacios</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-xl opacity-70">chevron_right</span>
+</button>
+<button class="group flex flex-row items-center justify-between p-5 rounded-3xl bg-white dark:bg-slate-800 text-slate-800 dark:text-white shadow-sm border border-brand-light dark:border-slate-700 active:scale-[0.97] transition-all duration-200">
+<div class="flex items-center gap-4">
+<div class="bg-brand-light p-2.5 rounded-2xl text-brand-blue group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-2xl">business_center</span>
+</div>
+<div class="text-left">
+<span class="block text-base font-bold lowercase">soy profesional / espacio</span>
+<span class="block text-xs text-slate-500 dark:text-slate-400 font-medium lowercase">gestioná tu agenda</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-xl opacity-30">chevron_right</span>
+</button>
+</div>
+<footer class="mt-auto py-8 border-t border-brand-blue/5">
+<p class="text-brand-dark-blue/40 dark:text-slate-500 text-[11px] font-medium leading-relaxed text-center px-10 lowercase italic">
+                    "unite a una comunidad dedicada a tu equilibrio y salud mental."
+                </p>
+</footer>
+</main>
+<div class="h-8 w-full bg-transparent"></div>
+</div>
+</body></html>

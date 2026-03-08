@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>agenda mensana</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2B88C9",
+                        "celeste": "#4DB8E2",
+                        "brand-vibrant": "#1E69BB",
+                        "background-light": "#F0F7FF",
+                        "background-dark": "#0F172A",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .header-gradient {
+            background: linear-gradient(135deg, #2B88C9 0%, #4DB8E2 100%);
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-slate-900 dark:text-slate-100">
+<div class="max-w-md mx-auto min-h-screen flex flex-col relative bg-background-light dark:bg-background-dark shadow-xl">
+<div class="sticky top-0 z-20 header-gradient shadow-md">
+<div class="flex items-center p-4 pb-2 justify-between">
+<div class="text-white flex size-10 shrink-0 items-center justify-center cursor-pointer rounded-full hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">arrow_back_ios</span>
+</div>
+<div class="flex-1 text-center">
+<h1 class="text-white text-xs font-medium tracking-widest opacity-80 uppercase mb-0.5">agenda</h1>
+<h2 class="text-white text-xl font-extrabold leading-tight tracking-tight">mensana</h2>
+</div>
+<div class="flex w-10 items-center justify-end text-white">
+<button class="flex items-center justify-center rounded-full h-10 w-10 hover:bg-white/10">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</div>
+<div class="px-4">
+<div class="flex border-b border-white/20 gap-6">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-white text-white pb-3 pt-4" href="#">
+<p class="text-sm font-bold leading-normal">pendientes (3)</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-white/60 pb-3 pt-4 hover:text-white transition-colors" href="#">
+<p class="text-sm font-bold leading-normal">confirmadas</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-white/60 pb-3 pt-4 hover:text-white transition-colors" href="#">
+<p class="text-sm font-bold leading-normal">historial</p>
+</a>
+</div>
+</div>
+</div>
+<main class="flex-1 px-4 py-6 space-y-6">
+<div class="bg-white dark:bg-slate-800/60 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700/50 overflow-hidden">
+<div class="p-5">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-cover bg-center ring-2 ring-celeste/30" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB9ny3aPdHvpniXdaD-FcT_-wmyQ9BcIU3mVrkOpC73l5-RFJcrJuG-HFnIjDZll68AGW-3z66pzaBpqMxuNCfhsjMB3Q0Mdk4kQxQJ5mE4JC7oTRcP6fmhPm3FkijFD84yEeb1Eq9Wj1Be4bwKhfq76ohILStfqs2nDRfeZ3HANoaF6ZPoD3jjZeb9Nt-dDquiyHgw4pzVGVlvgT0f_7437kuZPi51Lx0z7hPOC5G06iwOq8WHYNPmqvUp2pR7vYhdDkfaFTBZNzhA');"></div>
+<div>
+<h3 class="text-slate-800 dark:text-white text-base font-bold leading-tight">María García</h3>
+<p class="text-[10px] text-celeste font-bold uppercase tracking-widest">paciente frecuente</p>
+</div>
+</div>
+<span class="inline-flex items-center rounded-full bg-celeste/10 px-2.5 py-1 text-[10px] font-bold text-primary border border-celeste/20">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mr-1.5 animate-pulse"></span>
+                            PENDIENTE
+                        </span>
+</div>
+<div class="space-y-3 mb-6 bg-slate-50 dark:bg-slate-900/40 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-[20px]">medical_services</span>
+<p class="text-sm font-semibold">limpieza dental — dra. elena rivas</p>
+</div>
+<div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-[20px]">calendar_today</span>
+<p class="text-sm">15 de octubre, 2023</p>
+</div>
+<div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-[20px]">schedule</span>
+<p class="text-sm">09:00 am (45 min)</p>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<button class="w-full h-12 flex items-center justify-center gap-2 rounded-xl bg-brand-vibrant text-white text-sm font-bold shadow-lg shadow-brand-vibrant/25 active:scale-[0.98] transition-all">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+<path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.174.346-.217.462-.217s.231.001.332.005c.109.004.253-.041.397.304.145.348.491 1.2.534 1.289.043.089.072.191.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.101-.177.211-.077.383.1.171.444.733.953 1.185.656.584 1.209.765 1.382.852.173.087.275.072.376-.043.101-.116.434-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"></path>
+</svg>
+                            confirmar y enviar whatsapp
+                        </button>
+<div class="flex gap-3">
+<button class="flex-1 h-11 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-300 text-sm font-bold active:scale-95 transition-all">
+                                rechazar
+                            </button>
+<button class="flex-[2] h-11 flex items-center justify-center rounded-xl bg-celeste/10 border border-celeste/30 text-primary text-sm font-bold active:scale-95 transition-all">
+                                confirmar (silencioso)
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800/60 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700/50 overflow-hidden">
+<div class="p-5">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-cover bg-center ring-2 ring-celeste/30" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAHeyMm-Yz5U5ySyfgdMwOUpfZTEVFuawcSFKDdUYgZHWC542D3IGDoO2Pd-SmikPN2qAA-Db5EobWcu_MIkcNRUlXzGNExzMGutbAJ1hYfhKDzMPVZ8R8RIU8ZtbJzkcUjZnbwsOh-vZPSsIToxY4SxyTPCRKs6J-HOK5EzZg5dWPh3l1VJxGrFbWDnPvs5Et8TfUtxH3KO7MFKTAWoeXyR7WqtCfkIV6X0QryFII_xVoEbSIqU1BdnOLvuj7LnM5_2S8np8CWYASi');"></div>
+<div>
+<h3 class="text-slate-800 dark:text-white text-base font-bold leading-tight">Juan Pérez</h3>
+<p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">nuevo paciente</p>
+</div>
+</div>
+<span class="inline-flex items-center rounded-full bg-celeste/10 px-2.5 py-1 text-[10px] font-bold text-primary border border-celeste/20">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mr-1.5 animate-pulse"></span>
+                            PENDIENTE
+                        </span>
+</div>
+<div class="space-y-3 mb-6 bg-slate-50 dark:bg-slate-900/40 p-4 rounded-xl border border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-[20px]">stethoscope</span>
+<p class="text-sm font-semibold">consulta general — dr. alejandro silva</p>
+</div>
+<div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-[20px]">calendar_today</span>
+<p class="text-sm">14 de octubre, 2023</p>
+</div>
+<div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-primary text-[20px]">schedule</span>
+<p class="text-sm">10:30 am (30 min)</p>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<button class="w-full h-12 flex items-center justify-center gap-2 rounded-xl bg-brand-vibrant text-white text-sm font-bold shadow-lg shadow-brand-vibrant/25 active:scale-[0.98] transition-all">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+<path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.174.346-.217.462-.217s.231.001.332.005c.109.004.253-.041.397.304.145.348.491 1.2.534 1.289.043.089.072.191.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.101-.177.211-.077.383.1.171.444.733.953 1.185.656.584 1.209.765 1.382.852.173.087.275.072.376-.043.101-.116.434-.506.549-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"></path>
+</svg>
+                            confirmar y enviar whatsapp
+                        </button>
+<div class="flex gap-3">
+<button class="flex-1 h-11 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-300 text-sm font-bold active:scale-95 transition-all">
+                                rechazar
+                            </button>
+<button class="flex-[2] h-11 flex items-center justify-center rounded-xl bg-celeste/10 border border-celeste/30 text-primary text-sm font-bold active:scale-95 transition-all">
+                                confirmar (silencioso)
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-4 pb-24 text-center">
+<p class="text-slate-400 text-xs font-medium italic">no hay más solicitudes pendientes por hoy</p>
+</div>
+</main>
+<div class="fixed bottom-0 left-0 right-0 z-30 max-w-md mx-auto bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-t border-slate-100 dark:border-slate-800 pb-8 pt-3">
+<div class="flex justify-around items-center px-4">
+<div class="flex flex-col items-center gap-1 text-primary cursor-pointer group">
+<span class="material-symbols-outlined text-[26px]">pending_actions</span>
+<span class="text-[10px] font-bold">solicitudes</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 cursor-pointer hover:text-celeste group transition-colors">
+<span class="material-symbols-outlined text-[26px]">calendar_month</span>
+<span class="text-[10px] font-bold">agenda</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 cursor-pointer hover:text-celeste group transition-colors">
+<span class="material-symbols-outlined text-[26px]">group</span>
+<span class="text-[10px] font-bold">pacientes</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 cursor-pointer hover:text-celeste group transition-colors">
+<span class="material-symbols-outlined text-[26px]">person</span>
+<span class="text-[10px] font-bold">perfil</span>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

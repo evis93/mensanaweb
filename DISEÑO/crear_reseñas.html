@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>mensana - deja tu reseña</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec5b13",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221610",
+                        "mensana-blue": "#0ea5e9",
+                        "mensana-light": "#e0f2fe",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Public Sans', sans-serif;
+        }
+        .mensana-gradient {
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+        }
+        .dark .mensana-gradient {
+            background: linear-gradient(135deg, #0c4a6e 0%, #221610 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 min-h-screen font-display">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header / TopAppBar -->
+<header class="flex items-center justify-between p-4 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md sticky top-0 z-10 border-b border-mensana-blue/10">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-mensana-blue/10 transition-colors">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-300">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<span class="text-mensana-blue font-bold text-xl tracking-tight">mensana</span>
+</div>
+<div class="w-10"></div> <!-- Spacer for centering -->
+</header>
+<main class="flex-1 max-w-md mx-auto w-full px-6 py-8">
+<!-- Context Card -->
+<div class="mensana-gradient rounded-xl p-6 mb-8 shadow-sm border border-mensana-blue/20">
+<div class="flex items-center gap-4">
+<div class="h-16 w-16 rounded-full overflow-hidden border-2 border-white dark:border-slate-700 shadow-md">
+<img class="h-full w-full object-cover" data-alt="Doctor portrait with friendly smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFs1zs4ttMP3I4hnrVmYfwYZHF8JZ-6GFtPdN79xRSWcO-TC6FPvWpcAtb3hqqxHjxL4n5VyDDuPYT73g-qwgzrDF4Im2ryakGHUJxWKRalFTs__HGZ_QcWKbb-BvCbjl9tUyc7WVktvyr3mkNpMbn37Q0CdoAT2yYfB0Nq3k9m66dAiaeBYzr0SlAuQ-kI0wpYI-zUX-yEz-Uy2kfP-gDit2xRG-yHeJywLdx9FgOzEIMcviV7Ymbt6TIq-tvmuM8IVQSCOHC_k6K"/>
+</div>
+<div>
+<p class="text-sm font-medium text-mensana-blue uppercase tracking-wider">tu cita con</p>
+<h2 class="text-lg font-bold leading-tight dark:text-white">dr. alejandro martínez</h2>
+<p class="text-xs opacity-75">fisioterapia avanzada • 15 oct</p>
+</div>
+</div>
+</div>
+<!-- Review Section -->
+<div class="text-center mb-8">
+<h1 class="text-2xl font-bold mb-2 dark:text-white">¿cómo fue tu experiencia?</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm">tu opinión nos ayuda a mejorar cada día</p>
+</div>
+<!-- Star Rating -->
+<div class="flex justify-center gap-2 mb-10">
+<button class="group">
+<span class="material-symbols-outlined text-4xl text-primary transition-transform group-hover:scale-110" style="font-variation-settings: 'FILL' 1">star</span>
+</button>
+<button class="group">
+<span class="material-symbols-outlined text-4xl text-primary transition-transform group-hover:scale-110" style="font-variation-settings: 'FILL' 1">star</span>
+</button>
+<button class="group">
+<span class="material-symbols-outlined text-4xl text-primary transition-transform group-hover:scale-110" style="font-variation-settings: 'FILL' 1">star</span>
+</button>
+<button class="group">
+<span class="material-symbols-outlined text-4xl text-primary transition-transform group-hover:scale-110" style="font-variation-settings: 'FILL' 1">star</span>
+</button>
+<button class="group">
+<span class="material-symbols-outlined text-4xl text-slate-300 dark:text-slate-600 transition-transform group-hover:scale-110">star</span>
+</button>
+</div>
+<!-- Feedback Text Area -->
+<div class="space-y-4">
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1" for="feedback">
+                    cuéntanos más (opcional)
+                </label>
+<textarea class="w-full rounded-xl border-mensana-blue/20 bg-white dark:bg-slate-800/50 focus:border-primary focus:ring-primary dark:border-slate-700 dark:text-white transition-all resize-none p-4" id="feedback" placeholder="el trato fue excelente, muy profesional..." rows="5"></textarea>
+</div>
+<!-- Privacy Note -->
+<div class="flex items-center gap-2 mt-4 ml-1">
+<span class="material-symbols-outlined text-mensana-blue text-lg">verified_user</span>
+<p class="text-xs text-slate-500 dark:text-slate-400">esta reseña será pública en el perfil del profesional</p>
+</div>
+</main>
+<!-- Fixed Footer Action -->
+<footer class="p-6 max-w-md mx-auto w-full">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+<span>enviar reseña</span>
+<span class="material-symbols-outlined">send</span>
+</button>
+<button class="w-full mt-4 text-slate-400 dark:text-slate-500 font-medium py-2 hover:text-slate-600 dark:hover:text-slate-300 transition-colors text-sm">
+                ahora no, quizás más tarde
+            </button>
+</footer>
+</div>
+<!-- Decorative Gradient Mesh Elements -->
+<div class="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] bg-mensana-blue/10 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="fixed bottom-[-5%] right-[-5%] w-[30%] h-[30%] bg-primary/5 rounded-full blur-[80px] pointer-events-none"></div>
+</body></html>

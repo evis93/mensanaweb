@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>mensana - Catálogo de Bienestar</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4dbce9",
+                        "background-light": "#f6f5f3",
+                        "background-dark": "#1a1f23",
+                        "card-light": "#fcfcfc",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#121617] antialiased">
+<!-- Sticky Header -->
+<header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-primary/10 px-4 py-3 flex items-center justify-between">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined text-[#121617]">arrow_back_ios_new</span>
+</button>
+<h1 class="text-xl font-extrabold tracking-tight text-primary lowercase">mensana</h1>
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined text-[#121617]">search</span>
+</button>
+</header>
+<main class="max-w-md mx-auto pb-24">
+<!-- Hero Section / Title -->
+<section class="px-5 pt-6 pb-4">
+<h2 class="text-2xl font-bold leading-tight">Encuentra tu equilibrio</h2>
+<p class="text-sm text-[#658086] mt-1">Explora nuestros servicios diseñados para tu bienestar integral.</p>
+</section>
+<!-- Category Filter -->
+<nav class="flex gap-3 px-5 overflow-x-auto hide-scrollbar py-2">
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary text-white px-5 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+<span class="text-sm font-semibold">Todos</span>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white border border-primary/10 px-5 text-[#121617] hover:bg-primary/5 shadow-sm">
+<span class="material-symbols-outlined text-[20px] text-primary">spa</span>
+<span class="text-sm font-medium">Masajes</span>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white border border-primary/10 px-5 text-[#121617] hover:bg-primary/5 shadow-sm">
+<span class="material-symbols-outlined text-[20px] text-primary">self_improvement</span>
+<span class="text-sm font-medium">Yoga</span>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white border border-primary/10 px-5 text-[#121617] hover:bg-primary/5 shadow-sm">
+<span class="material-symbols-outlined text-[20px] text-primary">psychology</span>
+<span class="text-sm font-medium">Terapias</span>
+</button>
+</nav>
+<!-- Services Catalog -->
+<section class="px-5 mt-6 space-y-6">
+<!-- Service Card 1: Masaje -->
+<div class="bg-card-light rounded-lg overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-primary/5 transition-transform active:scale-[0.98]">
+<div class="relative h-48 w-full bg-center bg-cover" data-alt="Terapia de masaje relajante con aceites" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBehpfKSgPvDLGSDPwWooPC0b9UUdb0EJLadMOxeF5vQfT9YJOlpKRXd-q4FKCcuyFzag4dRT5GPh1MFya5kVqZXmFdgZJmJY-6omZxFDKsUXrjseWqjHfkZA0Kg6UfD5THwDd7RDblcigA-av5PP-cwKFgm2lIW1U9-zfpLQnYkdxD9upKIAFGX_37uDd6vQgmgr150XixhK60TgJRI4HVYWNHAqKBPcF0uCK9sXX2oIZ_XKaEktlV9hXRFoJWT9GjI12Rw0hOTBMu');">
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur rounded-full px-3 py-1 flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-primary text-sm fill-1">star</span>
+<span class="text-xs font-bold">4.9</span>
+</div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-2">
+<div>
+<span class="text-[10px] font-bold uppercase tracking-wider text-primary mb-1 block">Bienestar Físico</span>
+<h3 class="text-lg font-bold leading-tight">Masaje Descontracturante</h3>
+</div>
+<span class="text-xl font-extrabold text-primary">$45</span>
+</div>
+<div class="flex items-center gap-4 text-xs text-[#658086] mb-4">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                            60 min
+                        </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">front_hand</span>
+                            Manual
+                        </div>
+</div>
+<p class="text-sm text-[#658086] leading-relaxed mb-5">
+                        Alivia la tensión muscular profunda y reduce el estrés acumulado con técnicas terapéuticas aplicadas por profesionales certificados.
+                    </p>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg transition-colors shadow-md shadow-primary/20">
+                        Reservar Turno
+                    </button>
+</div>
+</div>
+<!-- Service Card 2: Yoga -->
+<div class="bg-card-light rounded-lg overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-primary/5 transition-transform active:scale-[0.98]">
+<div class="relative h-48 w-full bg-center bg-cover" data-alt="Persona practicando hatha yoga al amanecer" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBrg5RvUWdsWqqW28QnjWLqXC0ggyRilmaZrhDByFiyIX485srS4iHgLFJ69AxqSlpktuaSRmPUoNF3eHFDYtvITBfoUbOwMHUdP03t10h7197GkwUFXLtUfbNdDjlxNaJZm_oUiAe0f4_u47UdNlC8IqLwIcshmyRiFQGToiG08pKGB3MlrHOHb2J3GJjo0votmHDvKgCKn82Rd348gfzvX1n3Hy1BbYOLj7FOVEO2S2ER1OYAeDivXCd5pdkY49LsQwRl0QPQab8d');">
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur rounded-full px-3 py-1 flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-primary text-sm fill-1">star</span>
+<span class="text-xs font-bold">5.0</span>
+</div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-2">
+<div>
+<span class="text-[10px] font-bold uppercase tracking-wider text-primary mb-1 block">Mente &amp; Cuerpo</span>
+<h3 class="text-lg font-bold leading-tight">Hatha Yoga Personalizado</h3>
+</div>
+<span class="text-xl font-extrabold text-primary">$35</span>
+</div>
+<div class="flex items-center gap-4 text-xs text-[#658086] mb-4">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                            60 min
+                        </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">person</span>
+                            Individual
+                        </div>
+</div>
+<p class="text-sm text-[#658086] leading-relaxed mb-5">
+                        Sesión privada adaptada a tu nivel. Enfocada en la alineación postural, respiración consciente y flexibilidad integral.
+                    </p>
+<button class="w-full bg-primary/10 text-primary hover:bg-primary hover:text-white font-bold py-3 rounded-lg transition-all border border-primary/20">
+                        Consultar Disponibilidad
+                    </button>
+</div>
+</div>
+<!-- Service Card 3: Therapy -->
+<div class="bg-card-light rounded-lg overflow-hidden shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-primary/5 transition-transform active:scale-[0.98]">
+<div class="relative h-48 w-full bg-center bg-cover" data-alt="Sesión de reiki con manos sobre el paciente" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCz_pQNZjgNTAoJxCvzCZdxv60-In3lhDDGms_JbnEhS4DTsALjG2DwJmBSNdrOA30NSHilZBmAAWdB6gqAiJ9nYXU-v7ENaPdfL9xKRwfJW0K6c9b7MAIn43fd4rgIYdeSOFO_a5q7fcso0JFoxh2_9Gcshdy-7XaiGvdwLNq4oWUJ-IrAj0vlO4n0OR7t0hGVyoUs4WnT6ndPzkM9wJbWzJ5DObjljOgexAOzEIyBNSgWjh4j_hHPnc459nD8zzGGQ3bZoOoJ_3ei');">
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur rounded-full px-3 py-1 flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-primary text-sm fill-1">star</span>
+<span class="text-xs font-bold">4.8</span>
+</div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-2">
+<div>
+<span class="text-[10px] font-bold uppercase tracking-wider text-primary mb-1 block">Energía Vital</span>
+<h3 class="text-lg font-bold leading-tight">Terapia Reiki</h3>
+</div>
+<span class="text-xl font-extrabold text-primary">$40</span>
+</div>
+<div class="flex items-center gap-4 text-xs text-[#658086] mb-4">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                            45 min
+                        </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">bolt</span>
+                            Energético
+                        </div>
+</div>
+<p class="text-sm text-[#658086] leading-relaxed mb-5">
+                        Canalización de energía para restaurar el equilibrio físico y emocional, promoviendo una profunda sensación de paz y claridad mental.
+                    </p>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg transition-colors shadow-md shadow-primary/20">
+                        Reservar Turno
+                    </button>
+</div>
+</div>
+</section>
+<!-- Promotional Banner -->
+<section class="px-5 mt-10">
+<div class="bg-primary/5 rounded-lg border-2 border-dashed border-primary/20 p-6 text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-2">card_giftcard</span>
+<h4 class="font-bold text-[#121617]">¿Buscas un regalo especial?</h4>
+<p class="text-sm text-[#658086] mt-2 mb-4">Regala bienestar con nuestras Gift Cards personalizadas.</p>
+<button class="text-primary font-bold text-sm underline underline-offset-4">Comprar Gift Card</button>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-[#f0f3f4] px-6 pb-6 pt-3 flex items-center justify-between max-w-md mx-auto">
+<a class="flex flex-col items-center gap-1 text-[#658086] hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-semibold">Inicio</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary transition-colors" href="#">
+<span class="material-symbols-outlined fill-1">grid_view</span>
+<span class="text-[10px] font-bold">Catálogo</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#658086] hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="text-[10px] font-semibold">Mis Turnos</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#658086] hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-semibold">Perfil</span>
+</a>
+</nav>
+<!-- Floating Action Button for Contact -->
+<button class="fixed bottom-24 right-6 z-50 w-14 h-14 text-white rounded-full shadow-lg flex items-center justify-center transition-transform hover:scale-110 active:scale-95 bg-primary">
+<svg fill="currentColor" height="28px" viewbox="0 0 256 256" width="28px">
+<path d="M187.58,144.84l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,80,64a48.05,48.05,0,0,0-48,48c0,72,58.91,128,128,128a48.05,48.05,0,0,0,48-48A8,8,0,0,0,187.58,144.84ZM160,224c-63.13,0-112-48.87-112-112A32,32,0,0,1,80,80l12.41,24.83L77.16,127.39a8,8,0,0,0-.56,8.17c.18.34,13.62,25.66,35.45,47.49s47.15,35.27,47.49,35.45a8,8,0,0,0,8.17-.56l12.56-15.25L208,208A32,32,0,0,1,160,224Z"></path>
+</svg>
+</button>
+</body></html>

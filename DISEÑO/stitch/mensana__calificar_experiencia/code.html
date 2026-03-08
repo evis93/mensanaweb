@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "primary-light": "#60a5fa",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            text-transform: lowercase;
+        }
+        /* Custom scrollbar for minimalist look */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #dbe0e6;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-[#111418] dark:text-white min-h-screen">
+<div class="relative flex h-full min-h-screen w-full flex-col max-w-[480px] mx-auto bg-white dark:bg-background-dark shadow-sm">
+<!-- TopAppBar -->
+<header class="flex items-center bg-white dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="text-[#111418] dark:text-white flex size-12 shrink-0 items-center justify-start cursor-pointer">
+<span class="material-symbols-outlined text-2xl">arrow_back_ios</span>
+</div>
+<h2 class="text-[#111418] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">
+                calificar experiencia
+            </h2>
+</header>
+<main class="flex-1 overflow-y-auto pb-24">
+<!-- ProfileHeader -->
+<section class="flex p-4 mt-2">
+<div class="flex w-full flex-col gap-4 items-center">
+<div class="flex gap-4 flex-col items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-28 w-28 border-4 border-white dark:border-gray-800 shadow-sm" data-alt="portrait of a professional aesthetician smiling" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBhz6uj8igSDN8xb4E_Pgs-WBIISxkIuvJbBAjvrptIrZ_wcK0_i3nnlJwiUpMnpwwxPaiiiLHVO5ea0coXAKh7JDmcpAWZSJ7ZXa1h4ykx7QgL8Y3ZMhOSdmHay1dYico6_DTA3_dTvG7tSwYILUsuGzcGc0qt8FQOFFZz-GZIOpMdmGjCtYl06IyIWLgMK2HjBfoG8k8LePc7AGKKaOwIRwXTd3XEhGJmF_ACGBRNEtSCFGP3CDilVC6hlrVH-ANd-CLvtN70IZA-");'>
+</div>
+<div class="flex flex-col items-center justify-center">
+<p class="text-[#111418] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] text-center">
+                                centro de estética mensana
+                            </p>
+<p class="text-[#617589] dark:text-gray-400 text-sm font-normal leading-normal text-center">
+                                estás calificando tu cita del 15 de mayo
+                            </p>
+</div>
+</div>
+</div>
+</section>
+<!-- HeadlineText -->
+<section>
+<h3 class="text-[#111418] dark:text-white tracking-light text-2xl font-bold leading-tight px-4 text-center pb-2 pt-5">
+                    ¿qué te pareció el servicio?
+                </h3>
+</section>
+<!-- ActionsBar (Rating Selector) -->
+<section class="mt-4 mb-6">
+<div class="flex justify-center gap-3 px-4">
+<button class="flex flex-col items-center gap-2 group">
+<span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 1">star</span>
+</button>
+<button class="flex flex-col items-center gap-2 group">
+<span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 1">star</span>
+</button>
+<button class="flex flex-col items-center gap-2 group">
+<span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 1">star</span>
+</button>
+<button class="flex flex-col items-center gap-2 group">
+<span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 1">star</span>
+</button>
+<button class="flex flex-col items-center gap-2 group">
+<span class="material-symbols-outlined text-4xl text-[#dbe0e6] dark:text-gray-700">star</span>
+</button>
+</div>
+<p class="text-center text-sm text-[#617589] mt-3">toca una estrella para calificar</p>
+</section>
+<!-- TextField -->
+<section class="px-4 py-3">
+<label class="flex flex-col w-full">
+<textarea class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#111418] dark:text-white focus:outline-0 focus:ring-1 focus:ring-primary border border-[#dbe0e6] dark:border-gray-700 bg-white dark:bg-gray-800 min-h-32 placeholder:text-[#617589] p-4 text-base font-normal leading-normal" placeholder="contanos qué tal fue tu experiencia..."></textarea>
+</label>
+</section>
+<!-- Upload Photo Section -->
+<section class="px-4 py-4">
+<p class="text-[#111418] dark:text-white text-sm font-bold mb-3 px-1">subir foto del resultado (opcional)</p>
+<div class="grid grid-cols-3 gap-3">
+<div class="aspect-square border-2 border-dashed border-[#dbe0e6] dark:border-gray-700 rounded-xl flex flex-col items-center justify-center cursor-pointer bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 transition-colors">
+<span class="material-symbols-outlined text-[#617589] text-3xl">add_a_photo</span>
+<span class="text-[10px] text-[#617589] mt-1 font-medium text-center px-1">subir foto</span>
+</div>
+<!-- Placeholder for uploaded image -->
+<div class="aspect-square bg-cover bg-center rounded-xl relative overflow-hidden group shadow-sm" data-alt="close up of a professional skin care treatment result" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAk4BZuROnPn6FEGnCjCXS2pkYulBHnuWhce2DOBDt3QmGvh-2UXmLJHEmWWD1LtBByx7nQevdJtNDDN4L1GkFFLlbHN3J1iIu_USyMgZC3eXsalwDVNUPFdXlAgDbjykQD0xssJAWJWXfUNIMPwOs5mMM-B6vNBcEJmszJ7xR1H4E5P7mQJ1oDocJtYSoLdIv50gIXkdvlJFoQdRgD_npbg0snS8LPGhJV5JjD4Bbee8qBll5a4xLaL5oO_DBjCZ8BKuuQSKMFG5wk');">
+<div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-white">delete</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Fixed Bottom Action -->
+<footer class="p-4 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md fixed bottom-0 w-full max-w-[480px]">
+<button class="w-full h-14 bg-gradient-to-r from-primary to-primary-light text-white rounded-xl font-bold text-lg shadow-lg shadow-primary/20 hover:shadow-primary/40 active:scale-[0.98] transition-all flex items-center justify-center">
+                enviar calificación
+            </button>
+<!-- iOS Home Indicator Safe Area -->
+<div class="h-4"></div>
+</footer>
+</div>
+</body></html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#268FDB",
+              "background-start": "#99D6F7",
+              "background-end": "#E6F5FD",
+              "surface": "#FFFFFF",
+              "soft-blue": "#99D6F7",
+              "celeste": "#E6F5FD",
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+            boxShadow: {
+              'soft-glow': '0 8px 30px rgba(38, 143, 219, 0.08)',
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: linear-gradient(180deg, #99D6F7 0%, #E6F5FD 100%);
+            min-height: 100vh;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display text-slate-900">
+<div class="max-w-md mx-auto min-h-screen flex flex-col p-4">
+<header class="flex items-center justify-between py-6">
+<button class="size-10 flex items-center justify-center bg-white/50 backdrop-blur-sm rounded-full text-primary shadow-soft-glow">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-xl font-bold text-primary lowercase tracking-tight">gestión de pago</h1>
+<div class="size-10"></div>
+</header>
+<main class="flex-1 space-y-6">
+<section class="bg-white rounded-xl p-6 shadow-soft-glow border border-white/50">
+<h2 class="text-sm font-semibold text-primary/70 uppercase tracking-wider mb-4 lowercase">información de la cita</h2>
+<div class="flex gap-4 items-center">
+<div class="size-16 rounded-full bg-soft-blue/20 flex items-center justify-center overflow-hidden border-2 border-white">
+<img alt="Portrait of the patient" class="w-full h-full object-cover" data-alt="Portrait of a smiling patient" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCI1iTWOs5FCHGrw9Hn8zM_MTtmhH0ShH0VDcTPHpKmmmni2emFi6_ClrPm5fsnRzYE5IBigMAji1JfMFVv3iKlAelMjAUekffnC3J-vRYuB8Eg7iKzy_fNwfqK71IlRoPjEvAm9V1qkYCtmOkncbSJX_Vxacejdd11G27CxePLRcdZszRhgneltmQIetLmfLPig6IQZC9FND6WvFdorOb04671xBaxtfVJKlD52OEKuOG3-gYZIU6FiFCVpcAXnWdCj_rfeVC0FGdZ"/>
+</div>
+<div>
+<p class="text-lg font-bold text-slate-800 lowercase">juan pérez</p>
+<p class="text-sm text-slate-500 lowercase flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                            25 de octubre - 10:00 am
+                        </p>
+<p class="text-sm text-slate-500 lowercase flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">psychology</span>
+                            consulta psicológica
+                        </p>
+</div>
+</div>
+</section>
+<section class="bg-white rounded-xl p-6 shadow-soft-glow border border-white/50 space-y-5">
+<div>
+<label class="block text-sm font-medium text-slate-600 mb-2 lowercase ml-1">valor del servicio</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">$</span>
+<input class="w-full pl-8 pr-4 py-4 bg-slate-50 border-none rounded-xl text-slate-700 font-semibold focus:ring-2 focus:ring-primary/20" readonly="" type="text" value="50.00"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-600 mb-2 lowercase ml-1">monto pagado</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-primary font-bold">$</span>
+<input class="w-full pl-8 pr-4 py-4 bg-white border-2 border-soft-blue/30 rounded-xl text-slate-800 font-bold placeholder:text-slate-300 focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none" placeholder="0.00" type="number"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-600 mb-3 lowercase ml-1">método de pago</label>
+<div class="grid grid-cols-3 gap-3">
+<button class="flex flex-col items-center justify-center p-3 rounded-xl border-2 border-primary bg-primary/5 text-primary transition-all">
+<span class="material-symbols-outlined mb-1">payments</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">efectivo</span>
+</button>
+<button class="flex flex-col items-center justify-center p-3 rounded-xl border-2 border-slate-100 bg-slate-50 text-slate-400 hover:border-soft-blue/50 transition-all">
+<span class="material-symbols-outlined mb-1">credit_card</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">tarjeta</span>
+</button>
+<button class="flex flex-col items-center justify-center p-3 rounded-xl border-2 border-slate-100 bg-slate-50 text-slate-400 hover:border-soft-blue/50 transition-all">
+<span class="material-symbols-outlined mb-1">account_balance</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">transf.</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<footer class="py-8">
+<button class="w-full bg-primary text-white font-bold py-5 rounded-xl shadow-lg shadow-primary/30 hover:bg-primary/90 active:scale-[0.98] transition-all lowercase text-lg">
+                confirmar pago
+            </button>
+<p class="text-center text-slate-500 text-xs mt-4 lowercase opacity-70">
+                mensana • progreso gentil
+            </p>
+</footer>
+</div>
+<nav class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-md border-t border-soft-blue/20 px-8 py-3 flex justify-between items-center md:hidden">
+<button class="text-primary/40"><span class="material-symbols-outlined">home</span></button>
+<button class="text-primary/40"><span class="material-symbols-outlined">calendar_month</span></button>
+<button class="text-primary"><span class="material-symbols-outlined">account_balance_wallet</span></button>
+<button class="text-primary/40"><span class="material-symbols-outlined">person</span></button>
+</nav>
+</body></html>

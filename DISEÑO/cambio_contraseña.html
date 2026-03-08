@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>mensana - cambiar contraseña</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Quicksand:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#268FDB",
+                        "sky-soft": "#99D6F7",
+                        "celeste-pale": "#E6F5FD",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#121b20",
+                    },
+                    fontFamily: {
+                        "display": ["Quicksand", "Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft-glow': '0 8px 30px rgba(38, 143, 219, 0.12)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+        }
+        .soft-ui-input {
+            transition: all 0.3s ease;
+            box-shadow: inset 2px 2px 5px rgba(0,0,0,0.02);
+        }
+        .soft-ui-input:focus {
+            box-shadow: 0 0 0 4px rgba(38, 143, 219, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-gradient-to-b from-sky-soft to-celeste-pale min-h-screen flex items-center justify-center p-4">
+<div class="w-full max-w-md bg-white/80 backdrop-blur-md rounded-xl p-8 shadow-soft-glow border border-white/40">
+<div class="flex flex-col items-center mb-8">
+<div class="mb-2 text-primary">
+<span class="material-symbols-outlined text-5xl">spa</span>
+</div>
+<h1 class="text-primary text-3xl font-bold tracking-tight">mensana</h1>
+<p class="text-slate-500 text-sm mt-2">seguridad de tu cuenta</p>
+</div>
+<div class="space-y-6">
+<h2 class="text-slate-800 text-xl font-semibold text-center mb-6">cambiar contraseña</h2>
+<div class="space-y-4">
+<div class="flex flex-col gap-1.5">
+<label class="text-slate-600 text-sm font-medium px-1">contraseña actual</label>
+<div class="relative flex items-center">
+<input class="soft-ui-input w-full px-5 py-3.5 bg-white border border-slate-100 rounded-xl focus:ring-primary focus:border-primary outline-none text-slate-700 placeholder:text-slate-400 text-sm" placeholder="ingresa tu contraseña actual" type="password"/>
+<button class="absolute right-4 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-slate-600 text-sm font-medium px-1">nueva contraseña</label>
+<div class="relative flex items-center">
+<input class="soft-ui-input w-full px-5 py-3.5 bg-white border border-slate-100 rounded-xl focus:ring-primary focus:border-primary outline-none text-slate-700 placeholder:text-slate-400 text-sm" placeholder="ingresa tu nueva contraseña" type="password"/>
+<button class="absolute right-4 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-slate-600 text-sm font-medium px-1">confirmar nueva contraseña</label>
+<div class="relative flex items-center">
+<input class="soft-ui-input w-full px-5 py-3.5 bg-white border border-slate-100 rounded-xl focus:ring-primary focus:border-primary outline-none text-slate-700 placeholder:text-slate-400 text-sm" placeholder="repite tu nueva contraseña" type="password"/>
+<button class="absolute right-4 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<div class="pt-4 flex flex-col gap-3">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-full shadow-lg shadow-primary/20 transition-all active:scale-95 text-center">
+                    actualizar contraseña
+                </button>
+<button class="w-full bg-white/50 hover:bg-white text-primary font-semibold py-3 rounded-full border border-primary/10 transition-all text-center text-sm">
+                    cancelar y volver
+                </button>
+</div>
+</div>
+<div class="mt-8 flex justify-center items-center gap-2 text-slate-400 text-xs">
+<span class="material-symbols-outlined text-sm">lock</span>
+<span>tus datos están protegidos con cifrado de extremo a extremo</span>
+</div>
+</div>
+<div class="fixed bottom-8 w-full flex justify-center gap-8 text-primary/40 pointer-events-none opacity-20">
+<span class="material-symbols-outlined text-7xl">cloud</span>
+<span class="material-symbols-outlined text-9xl">self_improvement</span>
+<span class="material-symbols-outlined text-7xl">wb_sunny</span>
+</div>
+</body></html>

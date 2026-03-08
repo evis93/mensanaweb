@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#34b29d",
+                        "background-light": "#fafaf9",
+                        "background-dark": "#1f292e",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .form-input:focus {
+            border-color: #34b29d !important;
+            box-shadow: 0 0 0 1px #34b29d !important;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden max-w-[480px] mx-auto bg-background-light dark:bg-background-dark">
+<!-- Top Navigation Bar -->
+<div class="flex items-center px-4 py-4 justify-between sticky top-0 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md z-10">
+<div class="text-[#121716] dark:text-white flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors cursor-pointer">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+</div>
+<h2 class="text-[#121716] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-10">Registro Profesional</h2>
+</div>
+<!-- Progress Indicator -->
+<div class="flex flex-col gap-2 p-4 pt-2">
+<div class="flex gap-6 justify-between items-end">
+<p class="text-[#121716] dark:text-white text-sm font-semibold leading-normal">Paso 1: Datos Básicos</p>
+<p class="text-[#68827e] dark:text-gray-400 text-xs font-normal leading-normal uppercase tracking-wider">1 de 4</p>
+</div>
+<div class="rounded-full bg-[#dde4e3] dark:bg-gray-700 h-1.5 overflow-hidden">
+<div class="h-full rounded-full bg-primary transition-all duration-500" style="width: 25%;"></div>
+</div>
+</div>
+<!-- Headline & Body -->
+<div class="px-4 py-6">
+<h3 class="text-[#121716] dark:text-white tracking-tight text-3xl font-extrabold leading-tight">Comencemos con tu perfil</h3>
+<p class="text-[#526662] dark:text-gray-400 text-base font-normal leading-relaxed mt-2">
+                Introduce tu información profesional para que los pacientes de Mensana puedan conocerte y confiar en tu servicio.
+            </p>
+</div>
+<!-- Form Section -->
+<div class="flex flex-col gap-2 px-4 pb-24">
+<!-- Full Name Field -->
+<div class="flex flex-col gap-2 py-2">
+<label class="flex flex-col">
+<p class="text-[#121716] dark:text-white text-sm font-bold leading-normal pb-1.5 ml-1">Nombre Completo</p>
+<input class="form-input flex w-full rounded-xl text-[#121716] dark:text-white border border-[#dde4e3] dark:border-gray-700 bg-white dark:bg-gray-800 h-14 placeholder:text-[#68827e] px-4 text-base font-normal focus:ring-primary focus:border-primary transition-all" placeholder="Ej. Dr. Juan Pérez" type="text"/>
+</label>
+</div>
+<!-- Specialty Dropdown -->
+<div class="flex flex-col gap-2 py-2">
+<label class="flex flex-col">
+<p class="text-[#121716] dark:text-white text-sm font-bold leading-normal pb-1.5 ml-1">Especialidad</p>
+<div class="relative">
+<select class="form-input appearance-none flex w-full rounded-xl text-[#121716] dark:text-white border border-[#dde4e3] dark:border-gray-700 bg-white dark:bg-gray-800 h-14 px-4 text-base font-normal focus:ring-primary focus:border-primary transition-all cursor-pointer">
+<option disabled="" selected="" value="">Selecciona tu especialidad</option>
+<option value="psicologia">Psicología Clínica</option>
+<option value="psiquiatria">Psiquiatría</option>
+<option value="nutricion">Nutrición</option>
+<option value="terapia_ocupacional">Terapia Ocupacional</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-[#121716] dark:text-white">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</label>
+</div>
+<!-- License Number Field -->
+<div class="flex flex-col gap-2 py-2">
+<label class="flex flex-col">
+<p class="text-[#121716] dark:text-white text-sm font-bold leading-normal pb-1.5 ml-1">Número de Matrícula / Registro</p>
+<input class="form-input flex w-full rounded-xl text-[#121716] dark:text-white border border-[#dde4e3] dark:border-gray-700 bg-white dark:bg-gray-800 h-14 placeholder:text-[#68827e] px-4 text-base font-normal focus:ring-primary focus:border-primary transition-all" placeholder="Ingresa tu número oficial" type="text"/>
+</label>
+<p class="text-[#68827e] dark:text-gray-500 text-xs mt-1 ml-1 italic">Este número será verificado por nuestro equipo.</p>
+</div>
+<!-- Location Dropdown -->
+<div class="flex flex-col gap-2 py-2">
+<label class="flex flex-col">
+<p class="text-[#121716] dark:text-white text-sm font-bold leading-normal pb-1.5 ml-1">Localidad</p>
+<div class="relative">
+<select class="form-input appearance-none flex w-full rounded-xl text-[#121716] dark:text-white border border-[#dde4e3] dark:border-gray-700 bg-white dark:bg-gray-800 h-14 px-4 text-base font-normal focus:ring-primary focus:border-primary transition-all cursor-pointer">
+<option disabled="" selected="" value="">Tu ciudad o zona</option>
+<option value="madrid">Madrid, ES</option>
+<option value="barcelona">Barcelona, ES</option>
+<option value="valencia">Valencia, ES</option>
+<option value="remoto">Atención Remota (Online)</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-[#121716] dark:text-white">
+<span class="material-symbols-outlined">location_on</span>
+</div>
+</div>
+</label>
+</div>
+</div>
+<!-- Fixed Bottom Action Area -->
+<div class="fixed bottom-0 left-0 right-0 max-w-[480px] mx-auto p-4 bg-gradient-to-t from-background-light via-background-light dark:from-background-dark dark:via-background-dark to-transparent">
+<button class="w-full bg-primary hover:bg-[#2c9a88] text-white text-lg font-bold h-14 rounded-xl shadow-lg shadow-primary/20 transition-all flex items-center justify-center gap-2 group">
+                Siguiente
+                <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+<div class="mt-4 flex justify-center">
+<div class="h-1.5 w-32 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+</div>
+</div>
+</div>
+</body></html>

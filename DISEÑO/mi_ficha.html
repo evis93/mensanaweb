@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#268FDB",
+                        "background-light": "#F6F7F8",
+                        "background-dark": "#121B20",
+                        "sky-soft": "#99D6F7",
+                        "celeste-pale": "#E6F5FD"
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(180deg, #99D6F7 0%, #E6F5FD 100%);
+            min-height: 100vh;
+        }
+        .soft-glow {
+            box-shadow: 0 4px 20px -2px rgba(38, 143, 219, 0.08);
+        }
+        .lowercase-all {
+            text-transform: lowercase;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display lowercase-all" style="font-family: 'Quicksand', sans-serif;">
+<div class="relative flex min-h-screen w-full flex-col max-w-md mx-auto overflow-x-hidden pb-24">
+<!-- Header -->
+<header class="flex items-center p-6 justify-between">
+<div class="flex items-center gap-3">
+<div class="size-10 shrink-0 rounded-full border-2 border-white overflow-hidden soft-glow">
+<img alt="avatar de ana" class="w-full h-full object-cover" data-alt="fotografía de perfil circular de mujer sonriente" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOEg_9ZCEYdXOpSNLdZK4TI75wl22tRk4ojeVxLAQzMfz2il-XAWjeEb4Isjf8Kl9JPknHXoyY-M8jrTEuNvPeZYR7u7D3ltar69z2aa70dYXOo0XTH4Wxv2VEfvycTWMour65mxrCnmf5ag2MeluUPENzGSnqAg9VSX1rBH0X2ovAdspwZaw3RQWGl-bWmECqpMV4xkNV18i3O7RxT3iOpDGF9G5-7rjl4RvzhRapACuyBmL8rhmHG7mxdA1dCTcrFxccDJ_fQcLv"/>
+</div>
+<h2 class="text-primary text-xl font-bold tracking-tight">hola, ana</h2>
+</div>
+<button class="flex size-10 items-center justify-center rounded-full bg-white soft-glow text-primary">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<!-- Próxima Sesión -->
+<section class="px-6 mb-8">
+<h3 class="text-slate-600 text-sm font-semibold mb-3 px-1">próxima sesión</h3>
+<div class="bg-white rounded-xl p-5 soft-glow">
+<div class="flex justify-between items-start mb-4">
+<div class="flex flex-col gap-1">
+<span class="text-primary text-xs font-bold uppercase tracking-wider">mañana, 10:00</span>
+<p class="text-slate-900 text-lg font-bold leading-tight">masaje descontracturante</p>
+<p class="text-slate-500 text-sm font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">person</span>
+                            dr. garcía
+                        </p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 bg-slate-50 text-slate-600 text-xs font-bold py-3 rounded-lg border border-slate-100 hover:bg-slate-100 transition-colors">
+                        cancelar
+                    </button>
+<button class="flex-1 bg-primary/10 text-primary text-xs font-bold py-3 rounded-lg hover:bg-primary/20 transition-colors">
+                        cambiar horario
+                    </button>
+</div>
+</div>
+</section>
+<!-- Historial -->
+<section class="px-6 mb-8">
+<h3 class="text-slate-600 text-sm font-semibold mb-4 px-1">mi historial</h3>
+<div class="space-y-4">
+<!-- Timeline Item 1 -->
+<div class="flex gap-4 relative">
+<div class="flex flex-col items-center">
+<div class="size-3 rounded-full bg-primary/40 border-2 border-white z-10"></div>
+<div class="w-0.5 h-full bg-primary/10 absolute top-3"></div>
+</div>
+<div class="pb-6">
+<p class="text-xs text-slate-400 font-medium mb-1">15 de octubre</p>
+<p class="text-sm font-bold text-slate-800">consulta de seguimiento</p>
+<p class="text-xs text-slate-500">dra. martínez</p>
+<div class="mt-3 flex flex-col gap-2"><button class="w-fit px-4 py-1.5 rounded-full border border-primary text-primary text-[10px] font-bold flex items-center gap-1.5 hover:bg-primary/5">calificar <span class="material-symbols-outlined text-[14px]">star</span></button><p class="text-[9px] text-slate-400 leading-tight">tu reseña se guardará en mensana y se compartirá en google reviews</p></div></div>
+</div>
+<!-- Timeline Item 2 -->
+<div class="flex gap-4 relative">
+<div class="flex flex-col items-center">
+<div class="size-3 rounded-full bg-primary/40 border-2 border-white z-10"></div>
+<div class="w-0.5 h-full bg-primary/10 absolute top-3"></div>
+</div>
+<div class="pb-6">
+<p class="text-xs text-slate-400 font-medium mb-1">02 de octubre</p>
+<p class="text-sm font-bold text-slate-800">sesión de osteopatía</p>
+<p class="text-xs text-slate-500">lic. rosales</p>
+<div class="mt-3 flex flex-col gap-2"><button class="w-fit px-4 py-1.5 rounded-full border border-primary text-primary text-[10px] font-bold flex items-center gap-1.5 hover:bg-primary/5">calificar <span class="material-symbols-outlined text-[14px]">star</span></button><p class="text-[9px] text-slate-400 leading-tight">tu reseña se guardará en mensana y se compartirá en google reviews</p></div></div>
+</div>
+<!-- Timeline Item 3 -->
+<div class="flex gap-4 relative">
+<div class="flex flex-col items-center">
+<div class="size-3 rounded-full bg-primary/40 border-2 border-white z-10"></div>
+</div>
+<div class="pb-2">
+<p class="text-xs text-slate-400 font-medium mb-1">20 de septiembre</p>
+<p class="text-sm font-bold text-slate-800">primera entrevista</p>
+<p class="text-xs text-slate-500">dr. garcía</p>
+<div class="mt-3 flex flex-col gap-2"><button class="w-fit px-4 py-1.5 rounded-full border border-primary text-primary text-[10px] font-bold flex items-center gap-1.5 hover:bg-primary/5">calificar <span class="material-symbols-outlined text-[14px]">star</span></button><p class="text-[9px] text-slate-400 leading-tight">tu reseña se guardará en mensana y se compartirá en google reviews</p></div></div>
+</div>
+<div class="pt-4 px-1"><button class="w-full bg-primary text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2 hover:bg-primary/90 transition-all"><span class="material-symbols-outlined text-xl">add_circle</span>reservar más</button></div></div>
+</section>
+<!-- Para vos -->
+<section class="px-6 mb-4">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-slate-600 text-sm font-semibold px-1">para vos</h3>
+<span class="text-primary text-xs font-bold">ver más</span>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+<div class="min-w-[260px] bg-white rounded-xl overflow-hidden soft-glow">
+<div class="h-32 bg-slate-200">
+<img alt="mindfulness" class="w-full h-full object-cover opacity-80" data-alt="persona meditando frente a un lago tranquilo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeGys-SdVlNJJyI-tNqHdZtzPFYpAMK1GmXmEriVTOlufFyn9pzrvWNGaXCPL4Zo7Iv6Zcn7zb5fstHlv4ema_1w9MkPnizKZE6ynSFH2GKNomlnHXddb3cleabIaKcmfiZYWLKpyncN2e-aD_KgdjyW0xNSzd03xAkI7L7jLWLIGnw8ukwHblsqypPoeSs9E7q6DvPv2Sd6xKHE5lPnoD0Ml5BNYKE5Vsoi1FCO3od8Adtp9s3fjGNiVGJ0unTmhOvvkBrLsVeIBH"/>
+</div>
+<div class="p-4">
+<p class="text-xs text-primary font-bold mb-1">ejercicio</p>
+<p class="text-sm font-bold text-slate-900 leading-tight">mindfulness: respiración consciente</p>
+<p class="text-xs text-slate-500 mt-1">5 minutos de calma absoluta</p>
+</div>
+</div>
+<div class="min-w-[260px] bg-white rounded-xl overflow-hidden soft-glow">
+<div class="h-32 bg-slate-200">
+<img alt="yoga suave" class="w-full h-full object-cover opacity-80" data-alt="silueta de persona haciendo yoga al amanecer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqnmn_2-C4CY8IN6UHoCnGSJiMEZd2qLFaIstDYmL7cPKI3uJRXFoRRD-jyBz0G9Ckry4aMOaYxP7DMlPhW6_RiC2hn95YdPTDGwV2khjx5-RJJ6bnZOmFKmMksDcH4E3Xz73h6BWrUGk4BwMFtgpt43VPERTndrThIT3wpEyTKizehxHdsd8KzKPM7jgJQcBEZl1pxd5l3RmaY_Nx1JHEQ5sed_3mQMHUVbqPdivVE9ThoqN7kj0BQe0IVT0aDWuOCAu5IyzYlp5T"/>
+</div>
+<div class="p-4">
+<p class="text-xs text-primary font-bold mb-1">rutina</p>
+<p class="text-sm font-bold text-slate-900 leading-tight">estiramientos de mañana</p>
+<p class="text-xs text-slate-500 mt-1">mejora tu postura hoy</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 mx-auto max-w-md bg-white/90 backdrop-blur-md border-t border-slate-100 flex justify-around items-center px-4 py-3 z-50">
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined text-2xl">home</span>
+<span class="text-[10px] font-bold">inicio</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1">account_circle</span>
+<span class="text-[10px] font-bold">mi ficha</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined text-2xl">calendar_month</span>
+<span class="text-[10px] font-bold">sesiones</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined text-2xl">person</span>
+<span class="text-[10px] font-bold">perfil</span>
+</a>
+</nav>
+</div>
+</body></html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#257e77",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#131f1e",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a2a29",
+                        "accent-peach": "#F3C7B6"
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-[#121716] dark:text-white min-h-screen">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden max-w-[480px] mx-auto shadow-2xl bg-background-light dark:bg-background-dark">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex items-center bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md p-4 justify-between border-b border-[#dde4e3] dark:border-[#2d3d3b]">
+<div class="flex w-12 items-center">
+<span class="material-symbols-outlined cursor-pointer text-[#688280]">close</span>
+</div>
+<h2 class="text-[#121716] dark:text-white text-lg font-bold leading-tight tracking-tight flex-1 text-center">Publicar Material</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="text-primary text-base font-bold leading-normal">Guardar</button>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto pb-24">
+<!-- SectionHeader: Upload -->
+<div class="px-4 pt-6">
+<h3 class="text-[#121716] dark:text-white text-lg font-bold leading-tight tracking-tight">Sube tus fotos o videos</h3>
+<p class="text-[#688280] text-sm mt-1">Comparte tus tutoriales, resultados o sesiones.</p>
+</div>
+<!-- EmptyState / Upload Area -->
+<div class="p-4">
+<div class="flex flex-col items-center gap-6 rounded-xl border-2 border-dashed border-[#dde4e3] dark:border-[#2d3d3b] bg-white dark:bg-surface-dark px-6 py-12 transition-all hover:border-primary/50">
+<div class="flex size-16 items-center justify-center rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-4xl">cloud_upload</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<p class="text-[#121716] dark:text-white text-lg font-bold text-center">Añadir archivos</p>
+<p class="text-[#688280] text-sm font-normal text-center px-4">Toca para elegir desde tu galería o usar la cámara</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 rounded-lg h-11 px-6 bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-xl">photo_library</span>
+<span>Galería</span>
+</button>
+<button class="flex items-center gap-2 rounded-lg h-11 px-6 bg-[#f1f4f3] dark:bg-[#2d3d3b] text-[#121716] dark:text-white text-sm font-bold">
+<span class="material-symbols-outlined text-xl">videocam</span>
+<span>Cámara</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Form Fields -->
+<div class="space-y-2">
+<!-- TextField: Title -->
+<div class="px-4 py-2">
+<label class="flex flex-col w-full">
+<span class="text-[#121716] dark:text-white text-sm font-semibold pb-2">Título del Material</span>
+<input class="form-input flex w-full rounded-lg text-[#121716] dark:text-white dark:bg-surface-dark border-[#dde4e3] dark:border-[#2d3d3b] h-14 placeholder:text-[#688280] focus:ring-1 focus:ring-primary focus:border-primary" placeholder="Ej. Sesión de meditación guiada" type="text"/>
+</label>
+</div>
+<!-- TextField: Description -->
+<div class="px-4 py-2">
+<label class="flex flex-col w-full">
+<span class="text-[#121716] dark:text-white text-sm font-semibold pb-2">Descripción / Beneficios</span>
+<textarea class="form-input flex w-full rounded-lg text-[#121716] dark:text-white dark:bg-surface-dark border-[#dde4e3] dark:border-[#2d3d3b] min-h-32 placeholder:text-[#688280] focus:ring-1 focus:ring-primary focus:border-primary" placeholder="Describe de qué trata tu práctica y cómo ayuda a los consultantes..."></textarea>
+</label>
+</div>
+<!-- Category Selector (Custom Chip Component) -->
+<div class="px-4 py-2">
+<span class="text-[#121716] dark:text-white text-sm font-semibold pb-3 block">Categoría</span>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 rounded-full border border-primary bg-primary text-white text-sm font-medium">Estética</button>
+<button class="px-4 py-2 rounded-full border border-[#dde4e3] dark:border-[#2d3d3b] text-[#688280] text-sm font-medium">Terapias</button>
+<button class="px-4 py-2 rounded-full border border-[#dde4e3] dark:border-[#2d3d3b] text-[#688280] text-sm font-medium">Yoga</button>
+<button class="px-4 py-2 rounded-full border border-[#dde4e3] dark:border-[#2d3d3b] text-[#688280] text-sm font-medium">Psicología</button>
+</div>
+</div>
+</div>
+<!-- Preview Prompt -->
+<div class="p-4 mt-4">
+<button class="w-full flex items-center justify-center gap-3 rounded-xl border border-accent-peach/50 bg-accent-peach/10 p-4 text-[#121716] dark:text-white hover:bg-accent-peach/20 transition-colors">
+<span class="material-symbols-outlined text-primary">visibility</span>
+<span class="font-bold">Previsualizar en el feed</span>
+</button>
+</div>
+</main>
+<!-- Fixed Bottom Action Bar -->
+<footer class="fixed bottom-0 left-0 right-0 max-w-[480px] mx-auto p-4 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm border-t border-[#dde4e3] dark:border-[#2d3d3b]">
+<button class="w-full h-14 bg-primary text-white rounded-xl font-bold text-lg shadow-xl shadow-primary/30 flex items-center justify-center gap-2">
+<span>Publicar ahora</span>
+<span class="material-symbols-outlined">send</span>
+</button>
+</footer>
+</div>
+</body></html>

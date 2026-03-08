@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f8fbff;
+  --foreground: #1a2b3c;
+  --bg-gradient-start: #f8fbff;
+  --bg-gradient-end: #e1f5fe;
+  --brand-blue: #3498db;
+  --brand-dark: #2980b9;
+  --brand-cyan: #00d2ff;
+  --brand-light: #f0f9ff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-manrope);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-manrope), 'Manrope', sans-serif;
+}

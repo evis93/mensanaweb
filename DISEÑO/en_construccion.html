@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#269dd9",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#121b20",
+                        "celeste-soft": "#e0f2fe",
+                        "celeste-deep": "#bae6fd"
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .bg-gradient-custom {
+            background: linear-gradient(180deg, #bae6fd 0%, #f6f7f8 100%);
+        }
+        .dark .bg-gradient-custom {
+            background: linear-gradient(180deg, #121b20 0%, #0c1216 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased">
+<div class="relative flex min-h-screen w-full flex-col bg-gradient-custom overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="flex items-center p-4 pb-2 justify-between">
+<div class="text-primary flex size-12 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined" style="font-size: 24px;">arrow_back_ios</span>
+</div>
+<h2 class="text-primary text-xl font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">mensana</h2>
+</header>
+<main class="flex-1 flex flex-col justify-center items-center px-6">
+<!-- Illustration / HeaderImage -->
+<div class="w-full max-w-sm mb-8">
+<div class="relative aspect-square flex items-center justify-center rounded-full bg-white/40 dark:bg-white/5 backdrop-blur-sm border border-white/20">
+<!-- Stylized Minimalist Scene -->
+<div class="absolute inset-0 flex items-center justify-center opacity-80">
+<span class="material-symbols-outlined text-primary/40" style="font-size: 160px; font-variation-settings: 'wght' 100;">spa</span>
+</div>
+<div class="relative z-10 flex flex-col items-center">
+<div class="p-6 bg-white dark:bg-background-dark rounded-full shadow-xl shadow-primary/10">
+<span class="material-symbols-outlined text-primary" style="font-size: 48px; font-variation-settings: 'FILL' 1;">construction</span>
+</div>
+</div>
+<!-- Decorative floating elements -->
+<div class="absolute top-10 right-10 size-4 bg-primary/30 rounded-full blur-sm"></div>
+<div class="absolute bottom-20 left-12 size-6 bg-primary/20 rounded-full blur-sm"></div>
+</div>
+</div>
+<!-- HeadlineText -->
+<div class="max-w-xs text-center">
+<h1 class="text-[#121517] dark:text-white tracking-tight text-[28px] font-bold leading-tight pb-3 lowercase">
+                    estamos trabajando en tu bienestar
+                </h1>
+</div>
+<!-- BodyText -->
+<div class="max-w-xs text-center">
+<p class="text-[#121517]/70 dark:text-white/70 text-base font-normal leading-normal pb-8 lowercase">
+                    esta sección estará disponible muy pronto
+                </p>
+</div>
+<!-- SingleButton -->
+<div class="w-full max-w-[320px] pt-4">
+<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-5 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] shadow-lg shadow-primary/30 hover:bg-primary/90 transition-all active:scale-[0.98]">
+<span class="truncate lowercase">volver al inicio</span>
+</button>
+</div>
+</main>
+<!-- Footer spacing for iOS Safe Area -->
+<div class="h-10"></div>
+</div>
+<!-- Hidden img for data-alt requirement -->
+<div class="hidden">
+<img data-alt="minimalist plant growth with abstract construction tool illustration" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfWcDv-2gTb5FnRXKIfeZqBmgC5FP_xj1oWQyb-rjVX97jPKa0-jlFdX4hZHEUGhZGJoo9BFOTTkZsgyIlOg9QDpnvthW0SSGo_CdhISs-izvv1SZM7pQluX-4cYuIQ6a6mMAP3jckXEZnp7vm5Bq7TU4cCDNYhMNTuhj_zS7nc5Dp7kAOHF2fbRqObpb9ItsgXuNdlqV4iKGq7Ohhizy5PYoWya0Odm127hva28-XWyq9ZDH-7DUUXzK5zjLjY-yeL-Hb-9b0Ghna"/>
+<div data-alt="soft sky blue to white calming gradient background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDFr-OB6QnoU0W8v1Qi9wgHu0cZMLWHaGiBhFMUB7WG0eixYtzqd0UYyoca-KvoZoXmLGHitRU4JRDxbAecMwB0EcuXnaZe82-in6jTBI5Jx-iYRz0cMFmdONPr1DW0mDvPUryJV9cYYpoE0Wa0yqq7KWGAZBQANcmofTIXdwT8nJlr0ooIUnr3bi2BUQMQYZFsYgqvorZdKNVdbG8LluXj3vof_MflSQjGdPl02Jc6ayeit10FqFdQuDDqwIBOW3MjP9FyCMrqqiAp');"></div>
+</div>
+</body></html>

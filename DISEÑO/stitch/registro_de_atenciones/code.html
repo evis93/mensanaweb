@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>mensana - registro de atención</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b8bab",
+                        "background-light": "#ffffff",
+                        "background-dark": "#22252a",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "md": "8px",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px 0 rgba(0, 0, 0, 0.08)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #dde2e4;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light text-[#121617] font-display antialiased">
+<!-- Top Navigation / Header -->
+<header class="sticky top-0 z-50 bg-background-light border-b border-[#f1f3f4] px-4 py-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<a class="text-[#121617] hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">arrow_back</span>
+</a>
+<h1 class="text-lg font-bold lowercase tracking-tight">atención en curso</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-xs text-[#677c83] lowercase italic">cambios guardados automáticamente...</span>
+<button class="text-[#121617] p-1">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</header>
+<main class="max-w-4xl mx-auto p-4 md:p-6 space-y-6">
+<!-- Patient Profile Summary -->
+<section class="bg-background-light rounded-md shadow-soft border border-[#f1f3f4] p-4 flex flex-col sm:flex-row items-center gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-16 w-16 bg-[#F8F9FA] border border-[#f1f3f4]" data-alt="portrait of a calm woman looking forward" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCSWVai7EE8EOSKPfK2L5Ekv9SBhl3eofgOrzRgQ0bk1j5ekwwt0ohI-8NwDyt4yhk0VtBXBZfVpGdInOIGlcvM1mv-QBKUZqz_LKhY69Bkjtdm4PHNc74VWv8ufPqMIoYmczY8SM_zUHdtFzt5WO8_HHjXjXddBjQRFZ9RAVR4oIPpRv-Fi4mRkBb0OVEkj5FgLenofqyOqCviLKvrTpuhA6moiEr7Qm5boQgyHJ5tldD6T1YdIve6Jp2F5QHe393DSrQ4ThLDPpvQ");'></div>
+<div class="flex-1 text-center sm:text-left">
+<h2 class="text-xl font-bold lowercase tracking-tight">ana garcía</h2>
+<p class="text-[#677c83] text-sm lowercase">32 años • sesión #8 • 12 de octubre, 2023</p>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 rounded-md bg-[#F8F9FA] text-[#677c83] text-sm font-medium lowercase hover:bg-gray-100 transition-colors flex items-center gap-2 border border-[#f1f3f4]">
+<span class="material-symbols-outlined text-sm">history</span>
+                    ver ficha
+                </button>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Left Column: Notes Area -->
+<div class="lg:col-span-2 space-y-6">
+<!-- Main Clinical Note Area -->
+<div class="bg-background-light rounded-md shadow-soft border border-[#f1f3f4] overflow-hidden flex flex-col">
+<div class="bg-[#F8F9FA] px-4 py-2 border-b border-[#f1f3f4] flex justify-between items-center">
+<label class="text-xs font-semibold text-[#677c83] lowercase tracking-wider">notas de la sesión</label>
+<div class="flex gap-2">
+<button class="text-[#677c83] hover:text-primary transition-colors"><span class="material-symbols-outlined text-lg">format_bold</span></button>
+<button class="text-[#677c83] hover:text-primary transition-colors"><span class="material-symbols-outlined text-lg">format_italic</span></button>
+<button class="text-[#677c83] hover:text-primary transition-colors"><span class="material-symbols-outlined text-lg">format_list_bulleted</span></button>
+</div>
+</div>
+<textarea class="w-full min-h-[400px] p-6 border-none focus:ring-0 text-base leading-relaxed placeholder:text-gray-300 resize-none font-display text-[#121617] bg-[#F8F9FA]/30" placeholder="comienza a escribir las notas de progreso aquí..."></textarea>
+</div>
+<!-- Structured Inputs -->
+<div class="bg-background-light rounded-md shadow-soft border border-[#f1f3f4] p-6 space-y-4">
+<div>
+<label class="block text-xs font-semibold text-[#677c83] lowercase mb-2 px-1">tareas para el consultante</label>
+<input class="w-full bg-[#F8F9FA] border-none rounded-md focus:ring-2 focus:ring-primary/20 p-3 text-sm font-display text-[#121617]" placeholder="ej: ejercicios de respiración 5 min al día" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-semibold text-[#677c83] lowercase mb-2 px-1">plan de tratamiento (próxima sesión)</label>
+<input class="w-full bg-[#F8F9FA] border-none rounded-md focus:ring-2 focus:ring-primary/20 p-3 text-sm font-display text-[#121617]" placeholder="ej: profundizar en la relación con la madre" type="text"/>
+</div>
+</div>
+<!-- Action Button -->
+<div class="flex justify-end pt-2">
+<button class="bg-primary text-white px-8 py-3 rounded-md font-semibold text-base lowercase hover:opacity-90 transition-opacity flex items-center gap-2 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">save</span>
+                        guardar atención
+                    </button>
+</div>
+</div>
+<!-- Right Column: Patient History -->
+<div class="space-y-6">
+<aside class="bg-background-light rounded-md shadow-soft border border-[#f1f3f4] p-4 sticky top-24">
+<h3 class="text-sm font-bold lowercase text-[#121617] mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">history</span>
+                        historial rápido
+                    </h3>
+<div class="space-y-0 relative before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[1.5px] before:bg-[#dde2e4]">
+<!-- Timeline Item 1 -->
+<div class="relative pl-8 pb-6">
+<div class="absolute left-0 top-1.5 size-6 rounded-full bg-white border-2 border-primary flex items-center justify-center z-10">
+<span class="size-2 rounded-full bg-primary"></span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-primary lowercase">sesión #7 • 05 oct</span>
+<p class="text-sm text-[#121617] font-medium leading-snug mt-1">progreso moderado. reporta mejor manejo de ansiedad en el trabajo.</p>
+<button class="text-[10px] text-primary lowercase mt-2 font-semibold hover:underline text-left">ver detalles</button>
+</div>
+</div>
+<!-- Timeline Item 2 -->
+<div class="relative pl-8 pb-6">
+<div class="absolute left-0 top-1.5 size-6 rounded-full bg-white border-2 border-primary/40 flex items-center justify-center z-10">
+<span class="size-2 rounded-full bg-primary/40"></span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-[#677c83] lowercase">sesión #6 • 28 sep</span>
+<p class="text-sm text-[#677c83] leading-snug mt-1">crisis reportada por duelo reciente. se activan protocolos de contención.</p>
+<button class="text-[10px] text-primary lowercase mt-2 font-semibold hover:underline text-left">ver detalles</button>
+</div>
+</div>
+<!-- Timeline Item 3 -->
+<div class="relative pl-8">
+<div class="absolute left-0 top-1.5 size-6 rounded-full bg-white border-2 border-primary/40 flex items-center justify-center z-10">
+<span class="size-2 rounded-full bg-primary/40"></span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-[#677c83] lowercase">sesión #5 • 21 sep</span>
+<p class="text-sm text-[#677c83] leading-snug mt-1">evaluación inicial de síntomas depresivos. anamnesis completa.</p>
+<button class="text-[10px] text-primary lowercase mt-2 font-semibold hover:underline text-left">ver detalles</button>
+</div>
+</div>
+</div>
+<!-- Quick Tools -->
+<div class="mt-8 pt-6 border-t border-[#f1f3f4] space-y-3">
+<p class="text-[10px] font-bold text-[#677c83] lowercase tracking-wider uppercase">herramientas rápidas</p>
+<button class="w-full flex items-center justify-between p-2 rounded-md hover:bg-[#F8F9FA] transition-colors group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#677c83] group-hover:text-primary transition-colors">description</span>
+<span class="text-sm lowercase">generar receta</span>
+</div>
+<span class="material-symbols-outlined text-xs text-gray-300">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-2 rounded-md hover:bg-[#F8F9FA] transition-colors group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#677c83] group-hover:text-primary transition-colors">assignment</span>
+<span class="text-sm lowercase">licencia médica</span>
+</div>
+<span class="material-symbols-outlined text-xs text-gray-300">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-2 rounded-md hover:bg-[#F8F9FA] transition-colors group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#677c83] group-hover:text-primary transition-colors">contact_support</span>
+<span class="text-sm lowercase">vínculos familiares</span>
+</div>
+<span class="material-symbols-outlined text-xs text-gray-300">chevron_right</span>
+</button>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-background-light border-t border-[#f1f3f4] px-4 py-2 flex justify-between items-center z-50">
+<a class="flex flex-col items-center gap-1 text-[#677c83] hover:text-primary transition-colors py-1 flex-1" href="#">
+<span class="material-symbols-outlined">home</span>
+<p class="text-[10px] font-medium lowercase">inicio</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#677c83] hover:text-primary transition-colors py-1 flex-1" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<p class="text-[10px] font-medium lowercase">agenda</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary py-1 flex-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">groups</span>
+<p class="text-[10px] font-medium lowercase">pacientes</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#677c83] hover:text-primary transition-colors py-1 flex-1" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-[10px] font-medium lowercase">ajustes</p>
+</a>
+</nav>
+<!-- Spacer for bottom nav -->
+<div class="h-16"></div>
+</body></html>

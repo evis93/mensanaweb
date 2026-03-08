@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>mensana: historial de citas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b8cee",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-gold {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            color: #FFD700;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen flex flex-col">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-50 bg-white dark:bg-background-dark border-b border-gray-100 dark:border-gray-800">
+<div class="flex items-center p-4 justify-between max-w-md mx-auto">
+<div class="text-[#111418] dark:text-white flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined cursor-pointer">arrow_back_ios</span>
+</div>
+<h2 class="text-[#111418] dark:text-white text-lg font-extrabold leading-tight tracking-[-0.015em] flex-1 text-center pr-12 lowercase">mensana</h2>
+</div>
+</header>
+<main class="flex-1 max-w-md mx-auto w-full pb-24">
+<!-- Tabs Section -->
+<div class="bg-white dark:bg-background-dark">
+<div class="flex border-b border-gray-100 dark:border-gray-800 px-4 gap-8">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-gray-400 dark:text-gray-500 pb-[13px] pt-4 flex-1" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Próximos</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-primary pb-[13px] pt-4 flex-1" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Historial</p>
+</a>
+</div>
+</div>
+<!-- Section Header -->
+<div class="px-4 pt-6">
+<h3 class="text-[#111418] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Sesiones anteriores</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Revisa tus citas finalizadas y califica tu atención.</p>
+</div>
+<!-- Appointment List -->
+<div class="flex flex-col gap-4 p-4">
+<!-- Appointment Card: Pending Rating -->
+<div class="flex items-stretch justify-between gap-4 rounded-xl bg-white dark:bg-gray-900 p-4 shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="flex flex-[2_2_0px] flex-col justify-between gap-4">
+<div class="flex flex-col gap-1">
+<p class="text-gray-500 dark:text-gray-400 text-xs font-semibold uppercase tracking-wider">Ayer - 16:30 PM</p>
+<p class="text-[#111418] dark:text-white text-base font-bold leading-tight">Dra. Elena Rossi</p>
+<p class="text-gray-600 dark:text-gray-400 text-sm font-normal">Psicoterapia Individual</p>
+</div>
+<button class="flex min-w-[84px] items-center justify-center rounded-lg h-9 px-4 bg-primary text-white gap-2 text-sm font-bold w-full sm:w-fit shadow-md shadow-primary/20">
+<span class="material-symbols-outlined text-[18px]">star</span>
+<span class="truncate">Calificar experiencia</span>
+</button>
+</div>
+<div class="w-24 h-24 bg-center bg-no-repeat bg-cover rounded-lg shrink-0 border border-gray-100 dark:border-gray-700" data-alt="Retrato de mujer profesional de la salud" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAIgkhKqfXpf1kwbui1GbxpRHeUOTcIQbLxDgg9DKYGN4ch_w6i_wUxg08kpHS7vl5LrXxgXaHlueE5ExFSRAjhCVexZdFIoWWuY-6wYOmbV_0F13xngurgwXsI9oWjh2jGtC0niCXpho_ZizohIMXwTFtiP1wiYafVEB8kT9UgGwAjXLA3NPmG-MoCzd4GXQ9XOWcF0GzzFHJ5DAby9DtzVT1B4bOtz6JQxG1cm2GSJvaEtwXHxXV2VoeQpi27MKPBmetsI-5nsxk2");'>
+</div>
+</div>
+<!-- Appointment Card: Rated -->
+<div class="flex items-stretch justify-between gap-4 rounded-xl bg-white dark:bg-gray-900 p-4 shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="flex flex-[2_2_0px] flex-col justify-between gap-4">
+<div class="flex flex-col gap-1">
+<p class="text-gray-500 dark:text-gray-400 text-xs font-semibold uppercase tracking-wider">12 Oct, 2023 - 09:15 AM</p>
+<p class="text-[#111418] dark:text-white text-base font-bold leading-tight">Centro Médico Salus</p>
+<p class="text-gray-600 dark:text-gray-400 text-sm font-normal">Consulta Nutricional</p>
+</div>
+<div class="flex items-center gap-1 bg-gray-50 dark:bg-gray-800 w-fit px-3 py-1.5 rounded-full border border-gray-100 dark:border-gray-700">
+<span class="material-symbols-outlined fill-gold text-[18px]">star</span>
+<span class="material-symbols-outlined fill-gold text-[18px]">star</span>
+<span class="material-symbols-outlined fill-gold text-[18px]">star</span>
+<span class="material-symbols-outlined fill-gold text-[18px]">star</span>
+<span class="material-symbols-outlined fill-gold text-[18px]">star</span>
+<span class="text-xs font-bold text-gray-700 dark:text-gray-300 ml-1">5.0</span>
+</div>
+</div>
+<div class="w-24 h-24 bg-center bg-no-repeat bg-cover rounded-lg shrink-0 border border-gray-100 dark:border-gray-700" data-alt="Logo corporativo de un centro médico moderno" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAPaEjoXfua0MwCoaR-4HWg1ni2dasHJiX50YsiUewlCfNrS1MrKYa1twvhx8Be1lkKSySnZg_GvSfmYqLvFEpx_r9no-zKfLH3tQcmUzfOw6TJ-3wlgLrqoA0YmanivZGgEjOsduTF8u55E1505UX6wMgb5BaSes6mnZEIXXmliDv9oWE_yHzbpB5BeEqjBXINHw6raVqlFLvs2mDuJO326ahWj82wr0aq9fOxTjYo0BKRYHkbZS4rHUrfcC6jYaRaD6wVX61nyQf2");'>
+</div>
+</div>
+<!-- Appointment Card: Pending Rating -->
+<div class="flex items-stretch justify-between gap-4 rounded-xl bg-white dark:bg-gray-900 p-4 shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="flex flex-[2_2_0px] flex-col justify-between gap-4">
+<div class="flex flex-col gap-1">
+<p class="text-gray-500 dark:text-gray-400 text-xs font-semibold uppercase tracking-wider">05 Oct, 2023 - 11:00 AM</p>
+<p class="text-[#111418] dark:text-white text-base font-bold leading-tight">Dr. Julián Martínez</p>
+<p class="text-gray-600 dark:text-gray-400 text-sm font-normal">Terapia Cognitivo Conductual</p>
+</div>
+<button class="flex min-w-[84px] items-center justify-center rounded-lg h-9 px-4 bg-primary text-white gap-2 text-sm font-bold w-full sm:w-fit shadow-md shadow-primary/20">
+<span class="material-symbols-outlined text-[18px]">star</span>
+<span class="truncate">Calificar experiencia</span>
+</button>
+</div>
+<div class="w-24 h-24 bg-center bg-no-repeat bg-cover rounded-lg shrink-0 border border-gray-100 dark:border-gray-700" data-alt="Doctor sonriendo en consultorio médico" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAOeg65XKjlKBByrupAvmLDfRHDGePQexqINO7JFVtlnc1Yyr7v8Uy4qAcJECfyRwkB-D1fUOhv2AwN9TPYgEcBD62MxuG_h2QT7ONpuWdR8uNK8-eDuLmjGMHHOuoFzpiH_Qy9uXW_1p2StgOMkGbaIaSuwjqKFRvnzJFB12OWo41yNpbLWA6oI3oq4u1WnDS26Bnk4QBFPvT6KHrj6UrjpECUuqYc9OMghs6n3OsBiYglLSuSEKGfmW16CC1hZzyMsvBdZZ6jzpDi");'>
+</div>
+</div>
+<!-- Appointment Card: Rated -->
+<div class="flex items-stretch justify-between gap-4 rounded-xl bg-white dark:bg-gray-900 p-4 shadow-sm border border-gray-100 dark:border-gray-800">
+<div class="flex flex-[2_2_0px] flex-col justify-between gap-4">
+<div class="flex flex-col gap-1">
+<p class="text-gray-500 dark:text-gray-400 text-xs font-semibold uppercase tracking-wider">28 Sep, 2023 - 15:30 PM</p>
+<p class="text-[#111418] dark:text-white text-base font-bold leading-tight">Lic. Marina Gomez</p>
+<p class="text-gray-600 dark:text-gray-400 text-sm font-normal">Taller de Mindfulness</p>
+</div>
+<div class="flex items-center gap-1 bg-gray-50 dark:bg-gray-800 w-fit px-3 py-1.5 rounded-full border border-gray-100 dark:border-gray-700">
+<span class="material-symbols-outlined fill-gold text-[18px]">star</span>
+<span class="material-symbols-outlined fill-gold text-[18px]">star</span>
+<span class="material-symbols-outlined fill-gold text-[18px]">star</span>
+<span class="material-symbols-outlined fill-gold text-[18px]">star</span>
+<span class="material-symbols-outlined text-[18px] text-gray-300 dark:text-gray-600">star</span>
+<span class="text-xs font-bold text-gray-700 dark:text-gray-300 ml-1">4.0</span>
+</div>
+</div>
+<div class="w-24 h-24 bg-center bg-no-repeat bg-cover rounded-lg shrink-0 border border-gray-100 dark:border-gray-700" data-alt="Ambiente relajado para meditación" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAYTB3GaDNYUbF5x-Q2WQHuvh9r2o4iKxfV5b-H0auHyCHzsaCjquRpR3XxbFPJIdnkA2f5M2JeVZVZlcqkz3lpymI16-nd3zQTxXH0p5Na431XWn5sBw236_TPwV6mf6eNt5f26byL_jiEbl4cP8CxIGWjuHby6wQzmZoRTHs6ahjXz1Af9PTzc3Uh4baWy38i5XtwgF5vIRSQo4NqqdHMUuGEJK0p5c3CFEgUzXBytzp7WPf8Hxw9rUfE6WSjUa9o3CsgblEKKDFo");'>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (iOS style) -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-t border-gray-100 dark:border-gray-800">
+<div class="max-w-md mx-auto flex items-center justify-around h-20 pb-4">
+<a class="flex flex-col items-center gap-1 text-gray-400 dark:text-gray-500" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold">Inicio</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined font-bold">calendar_month</span>
+<span class="text-[10px] font-bold">Mis Turnos</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-gray-400 dark:text-gray-500" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="text-[10px] font-bold">Mensajes</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-gray-400 dark:text-gray-500" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold">Perfil</span>
+</a>
+</div>
+</nav>
+</body></html>

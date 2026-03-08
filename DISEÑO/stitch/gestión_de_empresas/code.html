@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>mensana | Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1f96ad",
+                        "background-light": "#f8f9fa",
+                        "background-dark": "#121e20",
+                        "neutral-soft": "#eef2f3",
+                        "accent-blue": "#d1e9ef",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        "soft": "0 4px 8px -2px rgba(0, 0, 0, 0.06), 0 2px 4px -2px rgba(0, 0, 0, 0.04)"
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .card-shadow {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light text-[#1a2c2f] min-h-screen flex flex-col">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-neutral-soft px-4 py-3">
+<div class="max-w-5xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-3">
+<button class="p-2 hover:bg-neutral-soft rounded-lg transition-colors">
+<span class="material-symbols-outlined text-primary">menu</span>
+</button>
+</div>
+<div class="flex flex-col items-center">
+<h1 class="text-xl font-extrabold tracking-tight text-primary lowercase">mensana</h1>
+<div class="flex items-center gap-1 text-[10px] uppercase tracking-widest font-bold text-[#658086]">
+                    Global Admin
+                </div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-neutral-soft rounded-lg transition-colors relative">
+<span class="material-symbols-outlined text-[#658086]">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full ring-2 ring-white"></span>
+</button>
+<div class="w-8 h-8 rounded-full bg-accent-blue flex items-center justify-center text-primary font-bold text-xs border border-primary/20">
+                    AD
+                </div>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-5xl mx-auto w-full p-4 pb-24">
+<!-- Time Range Selector -->
+<div class="flex justify-center mb-6">
+<div class="bg-white rounded-full p-1 border border-neutral-soft flex gap-1 shadow-sm">
+<button class="px-4 py-1.5 rounded-full text-xs font-bold bg-primary text-white transition-all">Este Mes</button>
+<button class="px-4 py-1.5 rounded-full text-xs font-bold text-[#658086] hover:bg-neutral-soft transition-all">Trimestre</button>
+<button class="px-4 py-1.5 rounded-full text-xs font-bold text-[#658086] hover:bg-neutral-soft transition-all">Anual</button>
+</div>
+</div>
+<!-- Metric Quick Stats -->
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+<div class="bg-white p-5 rounded-lg border border-neutral-soft card-shadow">
+<p class="text-[11px] font-bold uppercase tracking-wider text-[#658086] mb-1">Empresas</p>
+<div class="flex items-end justify-between">
+<span class="text-2xl font-extrabold text-[#121617]">142</span>
+<span class="text-xs font-bold text-primary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                        +8%
+                    </span>
+</div>
+</div>
+<div class="bg-white p-5 rounded-lg border border-neutral-soft card-shadow">
+<p class="text-[11px] font-bold uppercase tracking-wider text-[#658086] mb-1">Profesionales</p>
+<div class="flex items-end justify-between">
+<span class="text-2xl font-extrabold text-[#121617]">892</span>
+<span class="text-xs font-bold text-primary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                        +12%
+                    </span>
+</div>
+</div>
+<div class="bg-white p-5 rounded-lg border border-neutral-soft card-shadow col-span-2 md:col-span-1">
+<p class="text-[11px] font-bold uppercase tracking-wider text-[#658086] mb-1">Usuarios Activos</p>
+<div class="flex items-end justify-between">
+<span class="text-2xl font-extrabold text-[#121617]">12.4k</span>
+<span class="text-xs font-bold text-primary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                        +5%
+                    </span>
+</div>
+</div>
+</div>
+<!-- Section: Company List -->
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-lg font-bold text-[#121617]">Empresas Registradas</h2>
+<button class="text-primary text-sm font-bold flex items-center gap-1">
+                Ver todas
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Search Bar -->
+<div class="relative mb-6">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#aab8bb] text-xl">search</span>
+<input class="w-full bg-white border border-neutral-soft rounded-lg py-3 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm" placeholder="Buscar por nombre o ID..." type="text"/>
+</div>
+<!-- Company Cards Grid -->
+<div class="space-y-4">
+<!-- Company 1 -->
+<div class="bg-white p-4 rounded-lg border border-neutral-soft card-shadow flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-accent-blue/50 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-2xl">apartment</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-bold text-[#121617] truncate">TechFlow Solutions</h3>
+<p class="text-xs text-[#658086]">Suscripción Enterprise</p>
+</div>
+<div class="text-right hidden sm:block px-4">
+<p class="text-[10px] font-bold uppercase text-[#aab8bb]">Usuarios</p>
+<p class="font-bold text-primary">1,240</p>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded-full uppercase tracking-wider">Activa</span>
+<button class="p-1 hover:bg-neutral-soft rounded transition-colors text-[#aab8bb]">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Company 2 -->
+<div class="bg-white p-4 rounded-lg border border-neutral-soft card-shadow flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-neutral-soft flex items-center justify-center">
+<span class="material-symbols-outlined text-[#658086] text-2xl">location_city</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-bold text-[#121617] truncate">Global Retail Inc.</h3>
+<p class="text-xs text-[#658086]">Suscripción Pro</p>
+</div>
+<div class="text-right hidden sm:block px-4">
+<p class="text-[10px] font-bold uppercase text-[#aab8bb]">Usuarios</p>
+<p class="font-bold text-primary">542</p>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="px-3 py-1 bg-accent-blue text-primary text-[10px] font-bold rounded-full uppercase tracking-wider">Pendiente</span>
+<button class="p-1 hover:bg-neutral-soft rounded transition-colors text-[#aab8bb]">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Company 3 -->
+<div class="bg-white p-4 rounded-lg border border-neutral-soft card-shadow flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-accent-blue/50 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-2xl">business_center</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-bold text-[#121617] truncate">Design &amp; Co</h3>
+<p class="text-xs text-[#658086]">Suscripción Basic</p>
+</div>
+<div class="text-right hidden sm:block px-4">
+<p class="text-[10px] font-bold uppercase text-[#aab8bb]">Usuarios</p>
+<p class="font-bold text-primary">89</p>
+</div>
+<div class="flex flex-col items-end gap-2">
+<span class="px-3 py-1 bg-primary text-white text-[10px] font-bold rounded-full uppercase tracking-wider">Activa</span>
+<button class="p-1 hover:bg-neutral-soft rounded transition-colors text-[#aab8bb]">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Activity Summary (Bar Chart Style) -->
+<div class="mt-8 bg-white p-6 rounded-lg border border-neutral-soft card-shadow">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-bold text-[#121617]">Crecimiento de Plataforma</h3>
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+<span class="text-[10px] font-bold text-[#658086]">EMPRESAS</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-accent-blue border border-primary/20"></span>
+<span class="text-[10px] font-bold text-[#658086]">PROS</span>
+</div>
+</div>
+</div>
+<div class="flex items-end justify-between h-40 gap-2 px-2">
+<div class="flex-1 flex flex-col gap-1 items-center group">
+<div class="w-full flex gap-0.5 items-end justify-center">
+<div class="w-2 bg-accent-blue border-x border-t border-primary/10 rounded-t-sm" style="height: 40%"></div>
+<div class="w-2 bg-primary rounded-t-sm" style="height: 60%"></div>
+</div>
+<span class="text-[10px] font-bold text-[#aab8bb] mt-2">ENE</span>
+</div>
+<div class="flex-1 flex flex-col gap-1 items-center group">
+<div class="w-full flex gap-0.5 items-end justify-center">
+<div class="w-2 bg-accent-blue border-x border-t border-primary/10 rounded-t-sm" style="height: 55%"></div>
+<div class="w-2 bg-primary rounded-t-sm" style="height: 75%"></div>
+</div>
+<span class="text-[10px] font-bold text-[#aab8bb] mt-2">FEB</span>
+</div>
+<div class="flex-1 flex flex-col gap-1 items-center group">
+<div class="w-full flex gap-0.5 items-end justify-center">
+<div class="w-2 bg-accent-blue border-x border-t border-primary/10 rounded-t-sm" style="height: 35%"></div>
+<div class="w-2 bg-primary rounded-t-sm" style="height: 45%"></div>
+</div>
+<span class="text-[10px] font-bold text-[#aab8bb] mt-2">MAR</span>
+</div>
+<div class="flex-1 flex flex-col gap-1 items-center group">
+<div class="w-full flex gap-0.5 items-end justify-center">
+<div class="w-2 bg-accent-blue border-x border-t border-primary/10 rounded-t-sm" style="height: 60%"></div>
+<div class="w-2 bg-primary rounded-t-sm" style="height: 85%"></div>
+</div>
+<span class="text-[10px] font-bold text-[#aab8bb] mt-2">ABR</span>
+</div>
+<div class="flex-1 flex flex-col gap-1 items-center group">
+<div class="w-full flex gap-0.5 items-end justify-center">
+<div class="w-2 bg-accent-blue border-x border-t border-primary/10 rounded-t-sm" style="height: 70%"></div>
+<div class="w-2 bg-primary rounded-t-sm" style="height: 95%"></div>
+</div>
+<span class="text-[10px] font-bold text-primary mt-2">MAY</span>
+</div>
+<div class="flex-1 flex flex-col gap-1 items-center group">
+<div class="w-full flex gap-0.5 items-end justify-center">
+<div class="w-2 bg-accent-blue border-x border-t border-primary/10 rounded-t-sm" style="height: 45%"></div>
+<div class="w-2 bg-primary rounded-t-sm" style="height: 65%"></div>
+</div>
+<span class="text-[10px] font-bold text-[#aab8bb] mt-2">JUN</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full bg-white border-t border-neutral-soft px-6 py-2 pb-6 z-50">
+<div class="max-w-md mx-auto flex justify-between items-center">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined fill-[1]">domain</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Empresas</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#658086] hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Pros</span>
+</a>
+<div class="relative -top-6">
+<button class="w-14 h-14 bg-primary text-white rounded-full shadow-lg shadow-primary/30 flex items-center justify-center border-4 border-background-light">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</div>
+<a class="flex flex-col items-center gap-1 text-[#658086] hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">query_stats</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Métricas</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[#658086] hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Ajustes</span>
+</a>
+</div>
+</nav>
+</body></html>

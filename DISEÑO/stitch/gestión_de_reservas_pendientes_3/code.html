@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gestión de Reservas Pendientes</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#1f96ad",
+                "background-light": "#f6f8f8",
+                "background-dark": "#121e20",
+              },
+              fontFamily: {
+                "display": ["Manrope"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-slate-900 dark:text-slate-100">
+<div class="max-w-md mx-auto min-h-screen flex flex-col relative bg-background-light dark:bg-background-dark">
+<!-- TopAppBar -->
+<div class="sticky top-0 z-20 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="flex items-center p-4 pb-2 justify-between">
+<div class="text-[#121617] dark:text-white flex size-12 shrink-0 items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined">arrow_back_ios</span>
+</div>
+<h2 class="text-[#121617] dark:text-white text-lg font-extrabold leading-tight tracking-[-0.015em] flex-1 text-center">Solicitudes Pendientes</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex items-center justify-center rounded-lg h-12 w-12 bg-transparent text-[#121617] dark:text-white hover:bg-black/5 dark:hover:bg-white/5">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</div>
+<!-- Tabs -->
+<div class="px-4">
+<div class="flex border-b border-[#dce3e5] dark:border-slate-700 gap-8">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-primary pb-[13px] pt-4" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Pendientes (3)</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#658086] dark:text-slate-400 pb-[13px] pt-4 hover:text-primary transition-colors" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Confirmadas</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#658086] dark:text-slate-400 pb-[13px] pt-4 hover:text-primary transition-colors" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Historial</p>
+</a>
+</div>
+</div>
+</div>
+<!-- Content Area -->
+<main class="flex-1 px-4 py-6 space-y-6">
+<!-- Card 1 -->
+<div class="bg-white dark:bg-slate-800/50 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)] border border-slate-100 dark:border-slate-700/50 overflow-hidden">
+<div class="p-4">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-cover bg-center ring-2 ring-primary/10" data-alt="Close-up portrait of a woman named Maria Garcia" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB9ny3aPdHvpniXdaD-FcT_-wmyQ9BcIU3mVrkOpC73l5-RFJcrJuG-HFnIjDZll68AGW-3z66pzaBpqMxuNCfhsjMB3Q0Mdk4kQxQJ5mE4JC7oTRcP6fmhPm3FkijFD84yEeb1Eq9Wj1Be4bwKhfq76ohILStfqs2nDRfeZ3HANoaF6ZPoD3jjZeb9Nt-dDquiyHgw4pzVGVlvgT0f_7437kuZPi51Lx0z7hPOC5G06iwOq8WHYNPmqvUp2pR7vYhdDkfaFTBZNzhA');"></div>
+<div>
+<h3 class="text-[#121617] dark:text-white text-base font-bold leading-tight">María García</h3>
+<p class="text-xs text-primary font-semibold uppercase tracking-wider">Paciente Frecuente</p>
+</div>
+</div>
+<span class="inline-flex items-center rounded-full bg-amber-100 dark:bg-amber-900/30 px-2.5 py-0.5 text-xs font-bold text-amber-700 dark:text-amber-400">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500 mr-1.5"></span>
+                             PENDIENTE
+                        </span>
+</div>
+<div class="space-y-3 mb-6">
+<div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[18px]">medical_services</span>
+<p class="text-sm font-medium">Limpieza Dental — Dra. Elena Rivas</p>
+</div>
+<div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<p class="text-sm font-medium">15 de Octubre, 2023</p>
+</div>
+<div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<p class="text-sm font-medium">09:00 AM (45 min)</p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 h-11 flex items-center justify-center rounded-lg bg-[#f0f3f4] dark:bg-slate-700 text-[#121617] dark:text-white text-sm font-bold transition-all active:scale-95">
+                            Rechazar
+                        </button>
+<button class="flex-[2] h-11 flex items-center justify-center rounded-lg bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 transition-all active:scale-95">
+                            Confirmar Reserva
+                        </button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-white dark:bg-slate-800/50 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)] border border-slate-100 dark:border-slate-700/50 overflow-hidden">
+<div class="p-4">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-cover bg-center ring-2 ring-primary/10" data-alt="Portrait of a male patient named Juan Perez" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAHeyMm-Yz5U5ySyfgdMwOUpfZTEVFuawcSFKDdUYgZHWC542D3IGDoO2Pd-SmikPN2qAA-Db5EobWcu_MIkcNRUlXzGNExzMGutbAJ1hYfhKDzMPVZ8R8RIU8ZtbJzkcUjZnbwsOh-vZPSsIToxY4SxyTPCRKs6J-HOK5EzZg5dWPh3l1VJxGrFbWDnPvs5Et8TfUtxH3KO7MFKTAWoeXyR7WqtCfkIV6X0QryFII_xVoEbSIqU1BdnOLvuj7LnM5_2S8np8CWYASi');"></div>
+<div>
+<h3 class="text-[#121617] dark:text-white text-base font-bold leading-tight">Juan Pérez</h3>
+<p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Nuevo Paciente</p>
+</div>
+</div>
+<span class="inline-flex items-center rounded-full bg-amber-100 dark:bg-amber-900/30 px-2.5 py-0.5 text-xs font-bold text-amber-700 dark:text-amber-400">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500 mr-1.5"></span>
+                             PENDIENTE
+                        </span>
+</div>
+<div class="space-y-3 mb-6">
+<div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[18px]">stethoscope</span>
+<p class="text-sm font-medium">Consulta General — Dr. Alejandro Silva</p>
+</div>
+<div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<p class="text-sm font-medium">14 de Octubre, 2023</p>
+</div>
+<div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<p class="text-sm font-medium">10:30 AM (30 min)</p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 h-11 flex items-center justify-center rounded-lg bg-[#f0f3f4] dark:bg-slate-700 text-[#121617] dark:text-white text-sm font-bold transition-all active:scale-95">
+                            Rechazar
+                        </button>
+<button class="flex-[2] h-11 flex items-center justify-center rounded-lg bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 transition-all active:scale-95">
+                            Confirmar Reserva
+                        </button>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-white dark:bg-slate-800/50 rounded-xl shadow-[0_2px_12px_rgba(0,0,0,0.06)] border border-slate-100 dark:border-slate-700/50 overflow-hidden">
+<div class="p-4">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-cover bg-center ring-2 ring-primary/10" data-alt="Portrait of a female patient named Lucia Torres" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBjk0rtKfiacnHAWEQJQRY4m8hiGJ1fyZfAesq9IzlOj-I1ok-_NIIBciih6dC0VpgDeLo-ykRMaTZD-vxbDF-5-vwo65pvmSYn9gSXbuZyUKtejIop-0fw-YGcO33Ixkk6xDjzC1Yy3fPsi44CkK7DPdDXuhalXLzt6_c4ijmcwQkOPMS_UvVGm-JOUdFoTDll5sdVx3jBQfNUtErQUczdoUKsT42rRKw8Wcbrvw7QDiuaL3TAyXW9z2KcRoHEMZpH4kFXTvOD-6qZ');"></div>
+<div>
+<h3 class="text-[#121617] dark:text-white text-base font-bold leading-tight">Lucía Torres</h3>
+<p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Paciente Referido</p>
+</div>
+</div>
+<span class="inline-flex items-center rounded-full bg-amber-100 dark:bg-amber-900/30 px-2.5 py-0.5 text-xs font-bold text-amber-700 dark:text-amber-400">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500 mr-1.5"></span>
+                             PENDIENTE
+                        </span>
+</div>
+<div class="space-y-3 mb-6">
+<div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[18px]">emergency</span>
+<p class="text-sm font-medium">Extracción de Cordales — Dr. Carlos Ruiz</p>
+</div>
+<div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<p class="text-sm font-medium">16 de Octubre, 2023</p>
+</div>
+<div class="flex items-center gap-3 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<p class="text-sm font-medium">16:45 PM (60 min)</p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 h-11 flex items-center justify-center rounded-lg bg-[#f0f3f4] dark:bg-slate-700 text-[#121617] dark:text-white text-sm font-bold transition-all active:scale-95">
+                            Rechazar
+                        </button>
+<button class="flex-[2] h-11 flex items-center justify-center rounded-lg bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 transition-all active:scale-95">
+                            Confirmar Reserva
+                        </button>
+</div>
+</div>
+</div>
+<div class="pt-4 pb-20 text-center">
+<p class="text-slate-400 text-xs font-medium">No hay más solicitudes pendientes por hoy</p>
+</div>
+</main>
+<!-- Bottom Tab Bar (iOS Style) -->
+<div class="fixed bottom-0 left-0 right-0 z-30 max-w-md mx-auto bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800 pb-8 pt-2">
+<div class="flex justify-around items-center px-4">
+<div class="flex flex-col items-center gap-1 text-primary cursor-pointer">
+<span class="material-symbols-outlined">pending_actions</span>
+<span class="text-[10px] font-bold">Solicitudes</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 cursor-pointer">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="text-[10px] font-bold">Agenda</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 cursor-pointer">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[10px] font-bold">Pacientes</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 cursor-pointer">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold">Perfil</span>
+</div>
+</div>
+</div>
+</div>
+</body></html>

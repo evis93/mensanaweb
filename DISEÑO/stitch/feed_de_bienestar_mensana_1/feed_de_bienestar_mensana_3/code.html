@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Feed de Bienestar Mensana</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "brand-blue": "#2b89d8",
+                        "brand-celeste": "#4fc3f7",
+                        "brand-light": "#f0f9ff",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "sans": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .dark .glass-nav {
+            background: rgba(15, 23, 42, 0.85);
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#1e293b] dark:text-slate-100 min-h-screen">
+<nav class="sticky top-0 z-50 glass-nav border-b border-blue-50 dark:border-slate-800">
+<div class="flex items-center justify-between px-4 h-16">
+<div class="flex items-center gap-2">
+<div class="bg-brand-blue/10 p-2 rounded-xl text-brand-blue">
+<span class="material-symbols-outlined text-[28px] fill-current">spa</span>
+</div>
+<h1 class="text-xl font-extrabold tracking-tight text-brand-blue">Mensana</h1>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-2 text-slate-600 dark:text-slate-300 hover:bg-blue-50 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="p-2 text-slate-600 dark:text-slate-300 hover:bg-blue-50 dark:hover:bg-slate-800 rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2.5 right-2.5 w-2 h-2 bg-brand-celeste rounded-full border-2 border-white dark:border-slate-900"></span>
+</button>
+</div>
+</div>
+</nav>
+<main class="max-w-md mx-auto pb-28">
+<section class="py-5 overflow-x-auto no-scrollbar">
+<div class="flex px-4 gap-4">
+<div class="flex flex-col items-center gap-1.5 shrink-0">
+<div class="relative p-[3px] rounded-full bg-gradient-to-tr from-brand-blue to-brand-celeste">
+<div class="p-0.5 bg-white dark:bg-background-dark rounded-full">
+<div class="w-16 h-16 rounded-full bg-cover bg-center border border-blue-50" data-alt="Dermatóloga sonriendo en su consultorio" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB3TH4HPralt7YucEqpu0F747rw_OJD46gDhv10SHc89MsSWAINIHs7lQJnlDT1Ipf2vOJYoxTmvJFFOFtHNDptYc1NH_mldR12CNuDjmT0HzAkkYsgRd3KNnxpMWwD7pC41RCwx76H7C-G6sXFUARLOMBli1fnD9eytNACI82a4mduVc5SF7cmO7V618-gcysXFxFa1TRbD2TFz-aCW3sDL4k60shVndzq0wzF5H0iPqZAofP1aVfaHikLffcVzCllFkmBqaVY3BNo");'>
+</div>
+</div>
+<div class="absolute -bottom-1 left-1/2 -translate-x-1/2 bg-brand-blue text-[9px] font-black px-2 py-0.5 rounded-full text-white border-2 border-white dark:border-background-dark shadow-sm">
+                            VIVO
+                        </div>
+</div>
+<span class="text-[11px] font-semibold truncate w-16 text-center text-slate-700 dark:text-slate-300">Tu Clínica</span>
+</div>
+<div class="flex flex-col items-center gap-1.5 shrink-0">
+<div class="p-[3px] rounded-full border-2 border-brand-celeste/40">
+<div class="w-16 h-16 rounded-full bg-cover bg-center" data-alt="Instructor de yoga meditando" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCmA_zXSmo1ByhlzQgsqA2hvHqKf8fxReBDVBoJHlEx1J-BVAdS7mU1qZeeIk70ZlQSWNx4yAeO79OrKsbvIC59pK5exxMOt7rFjAavqqzvM0zwVvzAk739FFw7Hfnm_muHwkYf55-eAX4HxmRuAxMFjxj8nxG6U71WEUeZGFuzvJSXlzVdvwrJ-vC3GyumYKNRujnt8nHUB_nVCOCaMKi3EeZRCcOdnatGT1Jlihi2S94ooKSizPmGVAfV0bkGhMzKPbA58IaRKHiX");'>
+</div>
+</div>
+<span class="text-[11px] font-medium truncate w-16 text-center text-slate-600 dark:text-slate-400">Juan Yoga</span>
+</div>
+<div class="flex flex-col items-center gap-1.5 shrink-0">
+<div class="p-[3px] rounded-full border-2 border-brand-celeste/40">
+<div class="w-16 h-16 rounded-full bg-cover bg-center" data-alt="Nutricionista con vegetales frescos" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDj53PdkhF7aNnkJODzir3T0qqbaE64cVG9IJ3vpj5-Ilz4R2bfwR-pUiqFS5Pjza39T6ycqGUJpmYCbLDwTjk-YSqGKbhPdWBpSbltf6vpd4EYFrAjBFEkmuNQe6kAWYEqGIWo3DVykHpgReFaLhrE04uV-Ro49-ZCZewMxpCjXyAy4vlmoQ95HOdbjIZDOwo6-FXZKww96WA2R80JFaeIWTpUUi8KLTV_kgmC-6CbK1fq7lFJxXFzo7g40HBkTpOI7qgHb83RjS1n");'>
+</div>
+</div>
+<span class="text-[11px] font-medium truncate w-16 text-center text-slate-600 dark:text-slate-400">Nutri-Luz</span>
+</div>
+<div class="flex flex-col items-center gap-1.5 shrink-0">
+<div class="p-[3px] rounded-full border-2 border-brand-celeste/40">
+<div class="w-16 h-16 rounded-full bg-cover bg-center" data-alt="Psicóloga profesional en oficina moderna" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAQnTnMG6UGNWrJGSzgydVCup59x5xubux6y-KrhAakGyijbxGC3Gtv3xVnZJySuwh-4unCb7zD_v_rteMElkoA18KRu0g0VoyqKfd9mmxnrP7tMd7rZjkB43wmuqMWLMR6_SFr1WFRVMGEQ1VD84i1eaqWlAVpmrGxZWTuiZBnC_FxkO7OVN9Ou800Jv__YSVuzMST14NcbdAuVNoIk4z7QtgyHFQdi-LF4-kGsA3ljYjCLAAYpZtE4bM3I_bh7LsONzV6e9FnwMPW");'>
+</div>
+</div>
+<span class="text-[11px] font-medium truncate w-16 text-center text-slate-600 dark:text-slate-400">Dra. Sofía</span>
+</div>
+<div class="flex flex-col items-center gap-1.5 shrink-0">
+<div class="p-[3px] rounded-full border-2 border-brand-celeste/40">
+<div class="w-16 h-16 rounded-full bg-cover bg-center" data-alt="Terapeuta físico trabajando" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDZgON3GxCJTLFm0RG9qFzMBe2qq2O9nzZOowgG2VZu-D2DD6wxNqYFhIUPa3IgzGy7D-_sbuDg3tabySq48vtnGaKWSOFegs8q5Ko7wNbQw227YfwGSIUj7oYW4k1Ulpb6wRd9Oal5UZmfXajrKoCx4krNfNi_UdxqvUH9GxneZ81ZIrh97-ZOz2wQaG4_DtZQ4MLQ-W5E8sdoBqhCpCxrgGGSko145yx1W4qTiBQPhpr-VEILhKORJzJ4sbJ5KhLAh9870HDHgkIn");'>
+</div>
+</div>
+<span class="text-[11px] font-medium truncate w-16 text-center text-slate-600 dark:text-slate-400">Fisio-Max</span>
+</div>
+</div>
+</section>
+<div class="space-y-6 px-4">
+<article class="bg-brand-light/40 dark:bg-slate-900/50 backdrop-blur-sm rounded-3xl overflow-hidden shadow-sm border border-brand-celeste/10 dark:border-slate-800">
+<div class="p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-full bg-cover bg-center border border-brand-celeste/20" data-alt="Retrato de Dra. Elena Ruiz" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDgdkA-R0Zss0Ry8-RNXSLxUZCk2hRgBN9scWl0TJxTFg7kMJCqmgzdyrEtL17S_H_2mZQIDMuI6DK7vDpKP5j_sPcRrpBmTrmgNTAFDuytcqbdZvRjuiYfrpjN0s4gJ7fFq0GKPzdEys2zaPd8VlnH7CZ563lkzyP0Dh6zvO8pw-dhlZ9iD8ejc058AX990wMij3v_oeS5J5I15I1jU47F3g7Q45EE7nxRKmq3qYQoNmtLXBk8U-8HyhmbwdrN9vHswdrBK1f_ehb5");'></div>
+<div>
+<p class="font-bold text-[15px] leading-tight text-slate-800 dark:text-slate-100">Dra. Elena Ruiz</p>
+<p class="text-[11px] font-medium text-brand-blue uppercase tracking-wider">Dermatóloga Especialista</p>
+</div>
+</div>
+<button class="text-slate-400 p-1"><span class="material-symbols-outlined">more_horiz</span></button>
+</div>
+<div class="mx-2 overflow-hidden rounded-2xl shadow-inner">
+<div class="aspect-square bg-cover bg-center" data-alt="Textura de crema facial hidratante" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAnVXvXeL1yE0J75ZVqX6PHhlGScweWk1fosn-PXguDmVJajtPt5-H1or1lRI7ka34RcMdZxT6ZPOGWqcBTzONQqXgoalwTIAFZu1iUI89LGpVqvMYqj6oaUoDMmdkeYgnDUdKmR6JSnYL91kOmFnTkOfEYgmW5UuOMPooI5TfcjpUiqBCf5tK6CYW97u44yd192R0QHbJ9kXxowjjQlg4dDdRZi5fZrVtNMlDCs2S_fXhEbf6Aof5rBkoNtGrRLKRBeqIMNWILMyc_");'></div>
+</div>
+<div class="px-4 py-4 flex items-center justify-between">
+<div class="flex items-center gap-5">
+<button class="flex items-center gap-1.5 group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-brand-blue transition-colors">favorite</span>
+<span class="text-[12px] font-bold text-slate-500">1.2k</span>
+</button>
+<button class="flex items-center gap-1.5 group">
+<span class="material-symbols-outlined text-brand-blue fill-current">bookmark</span>
+<span class="text-[12px] font-bold text-brand-blue">450</span>
+</button>
+<button class="flex items-center gap-1.5 group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-brand-blue transition-colors">share</span>
+</button>
+</div>
+<button class="bg-brand-blue hover:bg-brand-blue/90 text-white px-5 py-2.5 rounded-xl text-[12px] font-bold shadow-md shadow-brand-blue/20 transition-all active:scale-95">
+                        Ver Perfil / Agendar
+                    </button>
+</div>
+<div class="px-4 pb-5">
+<p class="text-[14px] leading-relaxed mb-4 text-slate-700 dark:text-slate-300">
+<span class="font-bold text-slate-900 dark:text-white">Dra. Elena Ruiz</span> La hidratación es la clave para una piel radiante durante todo el año. Aquí te comparto mis 3 consejos esenciales para tu rutina diaria...
+                    </p>
+<div class="flex flex-wrap gap-2">
+<span class="text-[10px] font-extrabold text-brand-blue bg-brand-blue/10 px-3 py-1.5 rounded-full border border-brand-blue/10">#Estética</span>
+<span class="text-[10px] font-extrabold text-brand-blue bg-brand-blue/10 px-3 py-1.5 rounded-full border border-brand-blue/10">#PielSana</span>
+<span class="text-[10px] font-extrabold text-brand-blue bg-brand-blue/10 px-3 py-1.5 rounded-full border border-brand-blue/10">#Skincare</span>
+</div>
+</div>
+</article>
+<article class="bg-brand-light/40 dark:bg-slate-900/50 backdrop-blur-sm rounded-3xl overflow-hidden shadow-sm border border-brand-celeste/10 dark:border-slate-800">
+<div class="p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-full bg-cover bg-center border border-brand-celeste/20" data-alt="Retrato de Juan Carlos, instructor de yoga" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAkQxOZhHtjS4TYikn_igcOnX4PYjsPqkMhPZt6gR9XhKlSZP3r-RRayJjOcIkFmzMAxfIeQgY8sBbyeS42IWkD1c2A4ruQfiKt4MOgq4MsUs1NcEOmRMvhe7f8oNzLUbIfXEw-rkCM8qZdlK3UIw8GKgL0AfuZwsSxSPTz1sCq3uafUsNtp-fyH-yivZWEGAZsLBOOLEmMBfFHkHVRuHJyGA6WcHEtnmoK61m9HdW7yLFnHo7TPwD3AEiLZmZZeOBEITXQRUAiy1Yy");'></div>
+<div>
+<p class="font-bold text-[15px] leading-tight text-slate-800 dark:text-slate-100">Juan Yoga</p>
+<p class="text-[11px] font-medium text-brand-blue uppercase tracking-wider">Mindfulness &amp; Yoga</p>
+</div>
+</div>
+<button class="text-slate-400 p-1"><span class="material-symbols-outlined">more_horiz</span></button>
+</div>
+<div class="mx-2 overflow-hidden rounded-2xl shadow-inner relative">
+<div class="aspect-[4/5] bg-cover bg-center" data-alt="Persona haciendo yoga al amanecer" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCr6pXhdTiv1yX-DmIphTWRGKm1WHBxBqJmB76rEQKw_v3C8T-MQdeL5EqAdSSnBslJb6UtQAR6g1vkqNyKvHT9b8LytGNPRQWvHio8Dgv0-PNCPcW9HoVHDcB9x9bOcokA0rRg6NB-ae1J_Exp3pVjIXCeVKtCZnjtBFlRI8_N5j5nqeC5TGFAAN5Wd0m9IF5Rvk0hr9iooxe_ZlintbmxbWL-JjMLSq46jfx33aO7KNJi_yV-PwaBCpiCGHVUhtnLX_t_6tO85tMB");'></div>
+<div class="absolute inset-0 bg-black/5"></div>
+<div class="absolute top-4 left-4 bg-brand-blue/80 backdrop-blur-md p-2 rounded-full text-white shadow-lg">
+<span class="material-symbols-outlined text-[20px] fill-current">play_arrow</span>
+</div>
+</div>
+<div class="px-4 py-4 flex items-center justify-between">
+<div class="flex items-center gap-5">
+<button class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-brand-blue fill-current">favorite</span>
+<span class="text-[12px] font-bold text-slate-500">3.4k</span>
+</button>
+<button class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-slate-400">bookmark</span>
+<span class="text-[12px] font-bold text-slate-500">892</span>
+</button>
+</div>
+<button class="bg-brand-blue/10 text-brand-blue hover:bg-brand-blue/20 px-5 py-2.5 rounded-xl text-[12px] font-bold transition-all border border-brand-blue/10">
+                        Ver Perfil / Agendar
+                    </button>
+</div>
+<div class="px-4 pb-5">
+<p class="text-[14px] leading-relaxed mb-4 text-slate-700 dark:text-slate-300">
+<span class="font-bold text-slate-900 dark:text-white">Juan Yoga</span> 5 minutos de estiramiento consciente pueden cambiar tu día completo. Prueba esta rutina rápida al despertar y nota la diferencia.
+                    </p>
+<div class="flex flex-wrap gap-2">
+<span class="text-[10px] font-extrabold text-brand-blue bg-brand-blue/10 px-3 py-1.5 rounded-full border border-brand-blue/10">#Yoga</span>
+<span class="text-[10px] font-extrabold text-brand-blue bg-brand-blue/10 px-3 py-1.5 rounded-full border border-brand-blue/10">#Bienestar</span>
+<span class="text-[10px] font-extrabold text-brand-blue bg-brand-blue/10 px-3 py-1.5 rounded-full border border-brand-blue/10">#MorningRoutine</span>
+</div>
+</div>
+</article>
+</div>
+</main>
+<nav class="fixed bottom-0 left-0 right-0 z-50 glass-nav border-t border-blue-50 dark:border-slate-800 pb-safe">
+<div class="max-w-md mx-auto flex items-center justify-around h-20">
+<button class="flex flex-col items-center gap-1 text-brand-blue">
+<span class="material-symbols-outlined fill-current text-[28px]">home</span>
+<span class="text-[10px] font-bold">Inicio</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined text-[28px]">explore</span>
+<span class="text-[10px] font-medium">Explorar</span>
+</button>
+<button class="bg-brand-blue text-white p-3.5 rounded-2xl shadow-xl shadow-brand-blue/30 -mt-10 border-4 border-background-light dark:border-background-dark active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<span class="material-symbols-outlined text-[28px]">calendar_today</span>
+<span class="text-[10px] font-medium">Citas</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400">
+<div class="w-7 h-7 rounded-full bg-cover bg-center border-2 border-slate-200" data-alt="Avatar de usuario" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAs1-Jok5hTEW0NzTFLIZkLTJerlKGfRzxTyur3coEqVBkvMPf2KUn9P8k1DFvAVigBuB2DGAfGcf2dCyn_PzlCtICgNMk1boaNWpvK0bdrAs48YcqeRVGqZ0sL11LFLToyLACymXJ4NU4SN65WJiCqrCTsGCz5bX21-B-hwE52PsaZyfitQecfr8Rd39Yg70KFuRBN73whu_Ok_fFW8AaPOMZILNTKgDLdbTcSHBzrJhhR-LxTtigUdMRD6wTowWZyp_T1hswDvMz6");'></div>
+<span class="text-[10px] font-medium">Perfil</span>
+</button>
+</div>
+</nav>
+<div class="h-6 bg-white dark:bg-slate-900 fixed bottom-0 w-full z-50 opacity-50 pointer-events-none"></div>
+
+</body></html>
