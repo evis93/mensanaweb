@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useTheme } from '@/src/context/ThemeContext';
 import { useAuth } from '@/src/context/AuthContext';
 import { DatabaseService } from '@/src/services/database.service';
-import { TrendingUp, ChevronLeft, ChevronRight, Clock, Users, Sparkles } from 'lucide-react';
+import { TrendingUp, ChevronLeft, ChevronRight, Clock, Users, Sparkles, Eye, EyeOff, LoaderCircle } from 'lucide-react';
 
 const MESES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 
@@ -85,6 +85,7 @@ export default function AdminPage() {
     <div className="p-6 max-w-4xl mx-auto">
       <h1 className="text-2xl font-bold mb-6" style={{ color: colors.text }}>
         Administración
+        {loading && <LoaderCircle size={16} className="animate-spin inline ml-2" />}
       </h1>
 
       {/* Totales */}
