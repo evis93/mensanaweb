@@ -27,20 +27,20 @@ interface NavItem {
 }
 
 const ADMIN_NAV: NavItem[] = [
-  { label: 'Inicio', href: '/admin/agenda', icon: <Home size={18} /> },
-  { label: 'Agenda mensual', href: '/admin/agenda-mensual', icon: <CalendarRange size={18} /> },
-  { label: 'Reservas', href: '/admin/gestion-reservas', icon: <ClipboardList size={18} /> },
+  { label: 'Agenda Diaria', href: '/admin/agenda', icon: <Home size={18} /> },
+  { label: 'Gestión de Reservas', href: '/admin/gestion-reservas', icon: <ClipboardList size={18} /> },
   { label: 'Horarios', href: '/admin/horarios', icon: <Clock size={18} /> },
   { label: 'Profesionales', href: '/admin/profesionales', icon: <Users size={18} /> },
   { label: 'Servicios', href: '/admin/servicios', icon: <Sparkles size={18} /> },
+  { label: 'Agenda mensual', href: '/admin/agenda-mensual', icon: <CalendarRange size={18} /> },
   { label: 'Reportes', href: '/admin/reportes', icon: <BarChart3 size={18} /> },
   { label: 'Administración', href: '/admin', icon: <LayoutDashboard size={18} /> },
 ];
 
 const PROFESIONAL_NAV: NavItem[] = [
-  { label: 'Inicio', href: '/profesional/agenda', icon: <Home size={18} /> },
+  { label: 'Agenda Diaria', href: '/profesional/agenda', icon: <Home size={18} /> },
   { label: 'Agenda mensual', href: '/profesional/agenda-mensual', icon: <CalendarRange size={18} /> },
-  { label: 'Reservas', href: '/profesional/gestion-reservas', icon: <ClipboardList size={18} /> },
+  { label: 'Gestión de Reservas', href: '/profesional/gestion-reservas', icon: <ClipboardList size={18} /> },
   { label: 'Horarios', href: '/profesional/horarios', icon: <Clock size={18} /> },
 ];
 

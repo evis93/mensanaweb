@@ -1,14 +1,27 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { useTheme } from '@/src/context/ThemeContext';
+import { useAuth } from '@/src/context/AuthContext';
+import DashboardLayout from '@/src/components/layout/DashboardLayout';
 import { supabase } from '@/src/config/supabase';
-import { Building2, Plus, Users } from 'lucide-react';
+import { Building2, Users } from 'lucide-react';
+
 
 export default function MensanaPage() {
   const { colors } = useTheme();
+  const { profile, loading: authLoading } = useAuth();
+  const router = useRouter();
   const [empresas, setEmpresas] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+
+  // Protección de ruta: solo superadmin
+  useEffect(() => {
+    if (authLoading) return;
+    if (!profile) { router.replace('/'); return; }
+    if (profile.rol !== 'superadmin') { router.replace('/'); return; }
+  }, [profile, authLoading, router]);
 
   useEffect(() => {
     supabase
@@ -21,7 +34,16 @@ export default function MensanaPage() {
       });
   }, []);
 
+  if (authLoading || !profile || profile.rol !== 'superadmin') {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-600" />
+      </div>
+    );
+  }
+
   return (
+    <DashboardLayout>
     <div className="p-6">
       <div className="flex items-center justify-between mb-6">
         <div>
@@ -93,5 +115,6 @@ export default function MensanaPage() {
         </div>
       )}
     </div>
+    </DashboardLayout>
   );
 }

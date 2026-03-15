@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useMemo } from 'react';
 import { useAuth } from './AuthContext';
 import { useBusiness } from './BusinessContext';
+import { useTenant } from './TenantContext';
 import { darken, lighten, contrastText } from '../utils/colorUtils';
 
 interface Colors {
@@ -95,13 +96,15 @@ const ThemeContext = createContext<ThemeContextType>({
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const { profile, loading: authLoading } = useAuth();
   const { businessBranding, businessLoading } = useBusiness();
+  const tenant = useTenant();
 
   // Prioridad:
   //   1. profile autenticado (post-login) — mayor prioridad
-  //   2. businessBranding (pre-login, cargado por QR/URL slug)
-  //   3. Defaults de Mensana
+  //   2. tenant resuelto server-side (páginas /mensana/[slug]/*)
+  //   3. businessBranding (QR/localStorage, fallback legacy)
+  //   4. Defaults de Mensana
   const value = useMemo<ThemeContextType>(() => {
-    if (authLoading || businessLoading) {
+    if (authLoading) {
       return { themeId: 'loading', colors: DEFAULT_COLORS, logoUrl: null, empresaNombre: null, loading: true };
     }
 
@@ -118,6 +121,22 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
       };
     }
 
+    // Tenant resuelto server-side (ResolvedTenant usa .colors.primary etc.)
+    if (tenant) {
+      return {
+        themeId: `tenant-${tenant.id}`,
+        colors: buildColors(tenant.colors.primary, tenant.colors.secondary, tenant.colors.background),
+        logoUrl: resolveLogoUrl(tenant.nombre, tenant.logo_url),
+        empresaNombre: tenant.nombre || null,
+        loading: false,
+      };
+    }
+
+    // Sin sesión y sin tenant server-side: esperar branding cliente (QR/localStorage)
+    if (businessLoading) {
+      return { themeId: 'loading', colors: DEFAULT_COLORS, logoUrl: null, empresaNombre: null, loading: true };
+    }
+
     if (businessBranding) {
       const primary = (businessBranding.color_primary || DEFAULT_COLORS.primary).trim();
       const secondary = (businessBranding.color_secondary || DEFAULT_COLORS.secondary).trim();
@@ -132,7 +151,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     }
 
     return { themeId: 'default', colors: DEFAULT_COLORS, logoUrl: DEFAULT_LOGO, empresaNombre: null, loading: false };
-  }, [profile, authLoading, businessBranding, businessLoading]);
+  }, [profile, authLoading, tenant, businessBranding, businessLoading]);
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 };

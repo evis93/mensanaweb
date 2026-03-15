@@ -38,28 +38,33 @@ interface BusinessContextValue {
   setDevOverride?: (id: string | null) => void;
 }
 
+interface BusinessProviderProps {
+  children: React.ReactNode;
+}
+
 const BusinessContext = createContext<BusinessContextValue | null>(null);
 
-export const BusinessProvider = ({ children }: { children: React.ReactNode }) => {
+export const BusinessProvider = ({ children }: BusinessProviderProps) => {
   const [storedId, setStoredId] = useState<string | null>(null);
   const [devOverride, setDevOverride] = useState<string | null>(null);
   const [businessBranding, setBusinessBranding] = useState<BusinessBranding | null>(null);
-  const [businessLoading, setBusinessLoading] = useState(true);
+  const [businessLoading, setBusinessLoading] = useState(false);
 
-  // Al montar: restaurar desde localStorage
+  // Al montar: restaurar desde localStorage (para flujo QR/URL param)
   useEffect(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
+        setBusinessLoading(true);
         setStoredId(stored);
       } else if (IS_DEV && DEV_ENV_BUSINESS_ID) {
+        setBusinessLoading(true);
         setStoredId(DEV_ENV_BUSINESS_ID);
-      } else {
-        setBusinessLoading(false);
       }
     } catch {
-      setBusinessLoading(false);
+      // ignore
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const effectiveId = (IS_DEV && devOverride) ? devOverride : storedId;
@@ -75,11 +80,16 @@ export const BusinessProvider = ({ children }: { children: React.ReactNode }) =>
     let cancelled = false;
     setBusinessLoading(true);
 
-    // Intentar buscar por id (UUID) primero, luego por slug
-    supabase
+    // Si parece UUID buscar por id o slug; si no, solo por slug
+    const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(effectiveId);
+    const query = supabase
       .from('v_empresa_branding')
-      .select('id, nombre, color_primary, color_secondary, color_background, logo_url')
-      .or(`id.eq.${effectiveId},slug.eq.${effectiveId}`)
+      .select('id, nombre, color_primary, color_secondary, color_background, logo_url');
+    const filteredQuery = isUuid
+      ? query.or(`id.eq.${effectiveId},slug.eq.${effectiveId}`)
+      : query.eq('slug', effectiveId);
+
+    filteredQuery
       .maybeSingle()
       .then(({ data, error }) => {
         if (cancelled) return;

@@ -12,7 +12,7 @@ export default function ClienteLayout({ children }: { children: React.ReactNode 
   useEffect(() => {
     if (loading) return;
     if (!profile) {
-      router.replace('/auth/login');
+      router.replace('/');
     } else if (profile.rol !== 'cliente') {
       router.replace('/');
     }

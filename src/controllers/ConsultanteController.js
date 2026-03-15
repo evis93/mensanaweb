@@ -37,7 +37,7 @@ export class ConsultanteController {
           roles!inner(nombre)
         `)
         .eq('roles.nombre', 'cliente')
-        .or(`usuarios.nombre_completo.ilike.${searchTerm},usuarios.email.ilike.${searchTerm}`)
+        .or(`nombre_completo.ilike.${searchTerm},email.ilike.${searchTerm}`, { referencedTable: 'usuarios' })
         .limit(10);
 
       if (empresaFilter) {

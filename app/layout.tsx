@@ -15,6 +15,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" suppressHydrationWarning>
+      <head>
+        <link rel="manifest" href="/manifest.webmanifest" />
+      </head>
       <body className={`${manrope.variable} font-[family-name:var(--font-manrope)] antialiased`} suppressHydrationWarning>
         <BusinessProvider>
           <AuthProvider>

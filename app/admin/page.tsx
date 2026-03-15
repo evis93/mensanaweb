@@ -10,7 +10,7 @@ const MESES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto'
 
 export default function AdminPage() {
   const { colors } = useTheme();
-  const { profile } = useAuth();
+  const { profile, loading } = useAuth();
 
   const now = new Date();
   const [dia, setDia] = useState(now.getDate());

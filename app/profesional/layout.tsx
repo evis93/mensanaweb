@@ -12,7 +12,7 @@ export default function ProfesionalLayout({ children }: { children: React.ReactN
   useEffect(() => {
     if (loading) return;
     if (!profile) {
-      router.replace('/auth/login');
+      router.replace('/');
     } else if (profile.rol !== 'profesional') {
       router.replace('/');
     }

@@ -63,15 +63,6 @@ export default function EmpresaRegisterPage() {
 
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: colors.background }}>
-      <header className="flex items-center justify-between px-4 py-3 bg-white border-b">
-        <Link href={`/mensana/${slug}/auth/login`} className="w-8 h-8 flex items-center justify-center text-gray-500 text-xl">‹</Link>
-        <div className="flex items-center gap-2">
-          {logoUrl && <img src={logoUrl} alt="logo" className="w-7 h-7 rounded-lg object-cover" />}
-          <span className="text-base font-bold" style={{ color: colors.primary }}>{empresaNombre || 'mensana'}</span>
-        </div>
-        <div className="w-8" />
-      </header>
-
       <div className="flex-1 flex flex-col justify-center px-6 py-8 max-w-md mx-auto w-full">
         <div className="mb-8">
           <h1 className="text-2xl font-bold text-gray-800 mb-1">crear cuenta</h1>
