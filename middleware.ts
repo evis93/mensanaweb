@@ -34,7 +34,8 @@ function shouldBypass(pathname: string): boolean {
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const hostname = request.headers.get('host') || '';
+  // x-original-host lo inyecta el Cloudflare Worker (preserva el subdominio real)
+  const hostname = request.headers.get('x-original-host') || request.headers.get('host') || '';
   const cleanHostname = hostname.split(':')[0]; // quitar puerto en dev
 
   if (shouldBypass(pathname)) return NextResponse.next();
