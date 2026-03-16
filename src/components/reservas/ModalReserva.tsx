@@ -88,7 +88,7 @@ export default function ModalReserva({ open, onClose, onSaved, fecha, horaInicia
     searchTimeout.current = setTimeout(async () => {
       setIsSearching(true);
       const result = await ConsultanteController.buscarConsultantes(query, profile);
-      if (result.success) setConsultantesFiltrados(result.data || []);
+      if (result.success && 'data' in result) setConsultantesFiltrados(result.data || []);
       setIsSearching(false);
     }, 300);
   };

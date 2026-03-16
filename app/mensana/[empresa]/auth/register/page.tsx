@@ -35,7 +35,8 @@ export default function EmpresaRegisterPage() {
     }
 
     setLoading(true);
-    const result = await register(email, password, nombre);
+    const redirectTo = `${window.location.origin}/mensana/${slug}/auth/login`;
+    const result = await register(email, password, nombre, redirectTo);
 
     if ((result as any).success) {
       const userId = (result as any).data?.user?.id;

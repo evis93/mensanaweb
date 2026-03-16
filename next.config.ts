@@ -1,7 +1,7 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  typescript: { ignoreBuildErrors: true },
+  typescript: { ignoreBuildErrors: false },
   devIndicators: false,
 
   async rewrites() {

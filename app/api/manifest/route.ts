@@ -26,13 +26,24 @@ async function fetchBranding(slug: string): Promise<Branding | null> {
     { auth: { persistSession: false } },
   );
 
-  const { data } = await supabase
+  // 1. Por slug exacto
+  const { data: bySlug } = await supabase
     .from('v_empresa_branding')
     .select('nombre, color_primary, color_background, logo_url, slug')
-    .or(`slug.eq.${slug},nombre.ilike.${slug.replace(/-/g, ' ')}`)
+    .eq('slug', slug)
     .maybeSingle();
 
-  return data ?? null;
+  if (bySlug) return bySlug;
+
+  // 2. Fallback por nombre
+  const nombre = slug.replace(/-/g, ' ');
+  const { data: byNombre } = await supabase
+    .from('v_empresa_branding')
+    .select('nombre, color_primary, color_background, logo_url, slug')
+    .ilike('nombre', `%${nombre}%`)
+    .maybeSingle();
+
+  return byNombre ?? null;
 }
 
 async function fetchBrandingByDomain(domain: string): Promise<Branding | null> {
@@ -45,7 +56,7 @@ async function fetchBrandingByDomain(domain: string): Promise<Branding | null> {
   const { data } = await supabase
     .from('empresas')
     .select('nombre, color_primary, color_background, logo_url, slug')
-    .eq('custom_domain', domain)
+    .eq('url', domain)
     .maybeSingle();
 
   return data ?? null;

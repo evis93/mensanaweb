@@ -19,8 +19,9 @@ export async function GET(request: NextRequest) {
     request.headers.get('x-custom-domain') ??
     'mensana';
 
-  // Versión de cache — cambiar para forzar actualización global del SW
-  const CACHE_VERSION = 'v1';
+  // En Vercel usa el SHA del commit para invalidar el cache automáticamente en cada deploy.
+  // Localmente cae a 'v1'.
+  const CACHE_VERSION = process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) ?? 'v1';
   const CACHE_NAME = `mensana-${tenantSlug}-${CACHE_VERSION}`;
 
   const swScript = /* javascript */ `

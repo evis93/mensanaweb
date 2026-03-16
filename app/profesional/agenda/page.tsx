@@ -42,7 +42,7 @@ export default function AgendaPage() {
 
   useEffect(() => {
     ProfesionalController.obtenerProfesionales(profile).then(r => {
-      if (r.success) setProfesionales(r.data || []);
+      if (r.success && 'data' in r) setProfesionales(r.data || []);
     });
   }, [profile]);
 

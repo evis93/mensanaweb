@@ -89,10 +89,7 @@ export async function resolveTenantBySlug(
     raw = byNombre;
   }
 
-  if (!raw) {
-    console.error('[tenant] empresa no encontrada para slug:', slug);
-    return null;
-  }
+  if (!raw) return null;
 
   return {
     id: raw.id,

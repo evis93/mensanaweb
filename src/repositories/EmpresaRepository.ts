@@ -64,7 +64,7 @@ export async function findByCustomDomain(domain: string) {
   const { data, error } = await db()
     .from('empresas')
     .select('id, nombre, slug, plan, color_primary, color_secondary, color_background, logo_url')
-    .eq('custom_domain', domain)
+    .eq('url', domain)
     .maybeSingle();
 
   if (error) console.error('[EmpresaRepository.findByCustomDomain]', error.message);

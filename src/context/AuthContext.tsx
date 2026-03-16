@@ -10,7 +10,7 @@ interface AuthContextType {
   profile: Profile | null;
   loading: boolean;
   login: (email: string, password: string) => Promise<{ success: boolean; error?: any; data?: any }>;
-  register: (email: string, password: string, fullName: string) => Promise<{ success: boolean; error?: any; data?: any }>;
+  register: (email: string, password: string, fullName: string, emailRedirectTo?: string) => Promise<{ success: boolean; error?: any; data?: any }>;
   logout: () => Promise<void>;
   changePassword: (email: string, currentPassword: string, newPassword: string) => Promise<{ success: boolean; error?: any; data?: any }>;
   rol: string | null;
@@ -62,7 +62,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         ]);
 
       const { data: filas, error } = await queryTimeout(
-        supabase.from('v_sesion_contexto').select('*')
+        supabase.from('v_sesion_contexto').select('*') as unknown as Promise<any>
       );
 
       if (error) {
@@ -180,13 +180,16 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
-  const register = async (email: string, password: string, fullName: string) => {
+  const register = async (email: string, password: string, fullName: string, emailRedirectTo?: string) => {
     setLoading(true);
     try {
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
-        options: { data: { full_name: fullName } },
+        options: {
+          data: { full_name: fullName },
+          ...(emailRedirectTo && { emailRedirectTo }),
+        },
       });
       if (error) return { success: false, error };
       return { success: true, data };
