@@ -379,6 +379,51 @@ export class ReservaController {
     }
   }
 
+  // Obtener una reserva por ID con ficha incluida (Gap #12)
+  static async obtenerReservaPorId(id, profile) {
+    const permError = requirePermission(profile, 'reservas:read');
+    if (permError) return permError;
+
+    try {
+      const { data, error } = await supabase
+        .from('reservas')
+        .select('*, servicios(nombre), fichas(id, nota)')
+        .eq('id', id)
+        .single();
+
+      if (error) throw error;
+
+      const [enriquecida] = await this.enriquecerReservas([data]);
+      return {
+        success: true,
+        data: { ...enriquecida, ficha: data.fichas?.[0] || null },
+      };
+    } catch (error) {
+      return { success: false, error: error.message };
+    }
+  }
+
+  // Obtener historial de reservas de un cliente (Gap #13)
+  static async obtenerReservasPorCliente(clienteId, profile) {
+    const permError = requirePermission(profile, 'reservas:read');
+    if (permError) return permError;
+
+    try {
+      const { data, error } = await supabase
+        .from('reservas')
+        .select('*, servicios(nombre), fichas(nota)')
+        .eq('cliente_id', clienteId)
+        .eq('empresa_id', profile.empresaId)
+        .order('fecha', { ascending: false })
+        .order('hora_inicio', { ascending: false });
+
+      if (error) throw error;
+      return { success: true, data: data || [] };
+    } catch (error) {
+      return { success: false, error: error.message };
+    }
+  }
+
   // Actualizar reserva completa
   static async actualizarReserva(id, reservaData, profile) {
     const permError = requirePermission(profile, 'reservas:write');

@@ -69,16 +69,27 @@ export default function GestionReservasPage() {
 
       {/* Tabs */}
       <div className="flex gap-1 bg-gray-100 rounded-xl p-1 mb-6 w-fit">
-        {TABS.map((tab, i) => (
-          <button
-            key={tab}
-            onClick={() => setActiveTab(i)}
-            className={clsx('px-4 py-2 rounded-lg text-sm font-medium transition', activeTab === i ? 'bg-white shadow-sm' : 'text-gray-500 hover:text-gray-700')}
-            style={activeTab === i ? { color: colors.primary } : {}}
-          >
-            {tab}
-          </button>
-        ))}
+        {TABS.map((tab, i) => {
+          const pendientesCount = i === 0 ? reservas.filter(r => r.estado === 'pendiente').length : 0;
+          return (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(i)}
+              className={clsx('flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition', activeTab === i ? 'bg-white shadow-sm' : 'text-gray-500 hover:text-gray-700')}
+              style={activeTab === i ? { color: colors.primary } : {}}
+            >
+              {tab}
+              {pendientesCount > 0 && (
+                <span
+                  className="inline-flex items-center justify-center min-w-[18px] h-[18px] rounded-full text-white font-bold"
+                  style={{ background: '#ef4444', fontSize: '10px', padding: '0 4px' }}
+                >
+                  {pendientesCount}
+                </span>
+              )}
+            </button>
+          );
+        })}
       </div>
 
       {loading ? (

@@ -48,25 +48,9 @@ export class ConsultanteController {
 
       if (error) throw error;
 
-      // Obtener fichas de estos usuarios
-      const usuarioIds = (data || []).map(d => d.usuarios.id);
-      let fichasMap = new Map();
-
-      if (usuarioIds.length > 0 && empresaFilter) {
-        const { data: fichas } = await supabase
-          .from('fichas')
-          .select('id, cliente_id')
-          .in('cliente_id', usuarioIds)
-          .eq('empresa_id', empresaFilter)
-          .eq('activo', true);
-
-        (fichas || []).forEach(f => fichasMap.set(f.cliente_id, f.id));
-      }
-
       const consultantes = (data || []).map(item => ({
         id: item.usuarios.id,
         usuario_id: item.usuarios.id,
-        ficha_id: fichasMap.get(item.usuarios.id) || null,
         nombre_completo: item.usuarios.nombre_completo || '',
         email: item.usuarios.email || '',
         telefono: item.usuarios.telefono || '',
@@ -121,25 +105,9 @@ export class ConsultanteController {
 
       if (error) throw error;
 
-      // Obtener fichas
-      const usuarioIds = (data || []).map(d => d.usuarios.id);
-      let fichasMap = new Map();
-
-      if (usuarioIds.length > 0 && empresaFilter) {
-        const { data: fichas } = await supabase
-          .from('fichas')
-          .select('id, cliente_id')
-          .in('cliente_id', usuarioIds)
-          .eq('empresa_id', empresaFilter)
-          .eq('activo', true);
-
-        (fichas || []).forEach(f => fichasMap.set(f.cliente_id, f.id));
-      }
-
       const consultantes = (data || []).map(item => ({
         id: item.usuarios.id,
         usuario_id: item.usuarios.id,
-        ficha_id: fichasMap.get(item.usuarios.id) || null,
         nombre_completo: item.usuarios.nombre_completo || '',
         email: item.usuarios.email || '',
         telefono: item.usuarios.telefono || '',
@@ -383,7 +351,7 @@ export class ConsultanteController {
       const { error } = await supabase
         .from('usuario_empresa')
         .delete()
-        .eq('cliente_id', id)
+        .eq('usuario_id', id)
         .eq('empresa_id', profile.empresaId);
 
       if (error) throw error;

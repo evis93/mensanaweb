@@ -17,6 +17,8 @@ interface Props {
   open: boolean;
   onClose: () => void;
   onSaved: () => void;
+  /** Callback opcional: se llama cuando se crea un cliente nuevo, para ofrecer acceso a la app */
+  onNuevoClienteCreado?: (clienteId: string, clienteNombre: string, clienteTelefono: string) => void;
   fecha: string;
   horaInicial?: string | null;
   reservaEditar?: any | null;
@@ -24,7 +26,7 @@ interface Props {
   profile: any;
 }
 
-export default function ModalReserva({ open, onClose, onSaved, fecha, horaInicial, reservaEditar, profesionales, profile }: Props) {
+export default function ModalReserva({ open, onClose, onSaved, onNuevoClienteCreado, fecha, horaInicial, reservaEditar, profesionales, profile }: Props) {
   const { colors } = useTheme();
 
   const [consultanteSearch, setConsultanteSearch] = useState('');
@@ -43,6 +45,7 @@ export default function ModalReserva({ open, onClose, onSaved, fecha, horaInicia
     profesional_id: profile?.profesionalId || '',
     tipo_sesion_id: null as string | null,
     precio_total: '',
+    monto_seña: '',
   });
 
   useEffect(() => {
@@ -57,6 +60,7 @@ export default function ModalReserva({ open, onClose, onSaved, fecha, horaInicia
           profesional_id: reservaEditar.profesional_id || profile?.profesionalId || '',
           tipo_sesion_id: reservaEditar.servicio_id || null,
           precio_total: reservaEditar.precio_total?.toString() || '',
+          monto_seña: reservaEditar.monto_seña?.toString() || '',
         });
         setConsultanteSearch(reservaEditar.consultante_nombre || '');
       } else {
@@ -69,6 +73,7 @@ export default function ModalReserva({ open, onClose, onSaved, fecha, horaInicia
           profesional_id: profile?.profesionalId || '',
           tipo_sesion_id: null,
           precio_total: '',
+          monto_seña: '',
         });
         setConsultanteSearch('');
       }
@@ -113,6 +118,11 @@ export default function ModalReserva({ open, onClose, onSaved, fecha, horaInicia
       if (r.success) consultanteId = (r as any).data?.id;
     }
 
+    // Si la reserva es para un profesional distinto al usuario logueado → 'pendiente'
+    // para que pase por el gestor de reservas y el profesional confirme.
+    const esPropioTurno = form.profesional_id === profile?.profesionalId;
+    const estadoNuevo = reservaEditar ? reservaEditar.estado : (esPropioTurno ? 'confirmada' : 'pendiente');
+
     const reservaData = {
       cliente_id: consultanteId,
       consultante_id: consultanteId,
@@ -120,7 +130,8 @@ export default function ModalReserva({ open, onClose, onSaved, fecha, horaInicia
       hora_inicio: form.hora_inicio,
       servicio_id: form.tipo_sesion_id,
       precio_total: form.precio_total ? parseFloat(form.precio_total) : null,
-      estado: 'confirmada',
+      monto_seña: form.monto_seña ? parseFloat(form.monto_seña) : null,
+      estado: estadoNuevo,
     };
 
     const result = reservaEditar
@@ -128,8 +139,20 @@ export default function ModalReserva({ open, onClose, onSaved, fecha, horaInicia
       : await ReservaController.crearReserva(reservaData, form.profesional_id, profile);
 
     setGuardando(false);
-    if (result.success) onSaved();
-    else alert((result as any).error || 'Error al guardar');
+    if (result.success) {
+      // Si se creó un cliente nuevo, notificar al padre para ofrecer acceso a la app
+      const esClienteNuevo = !form.consultante_id && !!form.consultante_nombre && !!consultanteId;
+      if (!reservaEditar && esClienteNuevo && onNuevoClienteCreado) {
+        onNuevoClienteCreado(consultanteId, form.consultante_nombre, form.consultante_telefono);
+      }
+      if (!esPropioTurno && !reservaEditar) {
+        // Avisar que fue al gestor
+        alert(`La reserva fue enviada al gestor de reservas para que ${profesionales.find(p => p.id === form.profesional_id)?.nombre_completo || 'el profesional'} la confirme.`);
+      }
+      onSaved();
+    } else {
+      alert((result as any).error || 'Error al guardar');
+    }
   };
 
   if (!open) return null;
@@ -263,6 +286,28 @@ export default function ModalReserva({ open, onClose, onSaved, fecha, horaInicia
               style={{ borderColor: colors.border }}
             />
           </div>
+
+          {/* Seña / depósito */}
+          <div>
+            <label className="block text-sm font-medium mb-1" style={{ color: colors.text }}>
+              Seña / depósito ($) <span className="font-normal text-xs" style={{ color: colors.textSecondary }}>(opcional)</span>
+            </label>
+            <input
+              type="number"
+              value={form.monto_seña}
+              onChange={e => setForm(prev => ({ ...prev, monto_seña: e.target.value }))}
+              placeholder="0"
+              className="w-full px-3 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              style={{ borderColor: colors.border }}
+            />
+          </div>
+
+          {/* Aviso si es para otro profesional */}
+          {form.profesional_id && form.profesional_id !== profile?.profesionalId && !reservaEditar && (
+            <div className="rounded-lg px-3 py-2.5 text-xs" style={{ background: '#fffbeb', color: '#92400e', border: '1px solid #fde68a' }}>
+              ⚠️ Esta reserva irá al <strong>gestor de reservas</strong> para que el profesional la confirme.
+            </div>
+          )}
         </div>
 
         <div className="flex gap-3 mt-6">

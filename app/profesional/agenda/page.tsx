@@ -5,18 +5,19 @@ import { useAuth } from '@/src/context/AuthContext';
 import { useTheme } from '@/src/context/ThemeContext';
 import { ReservaController } from '@/src/controllers/ReservaController';
 import { ProfesionalController } from '@/src/controllers/ProfesionalController';
-import { ConsultanteController } from '@/src/controllers/ConsultanteController';
 import ModalReserva from '@/src/components/reservas/ModalReserva';
 import ModalPago from '@/src/components/reservas/ModalPago';
 import ModalFicha from '@/src/components/reservas/ModalFicha';
-import { Plus, ChevronLeft, ChevronRight, ClipboardList } from 'lucide-react';
+import ModalAccesoCliente from '@/src/components/reservas/ModalAccesoCliente';
+import ModalCierreCaja from '@/src/components/agenda/ModalCierreCaja';
+import { ChevronLeft, ChevronRight, ClipboardList, LockKeyhole } from 'lucide-react';
 import { clsx } from 'clsx';
 
 const DIAS_SEMANA = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
 const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
 const HORARIOS = Array.from({ length: 13 }, (_, i) => i + 8); // 8-20h
 
-export default function AgendaPage() {
+export default function AgendaProfesionalPage() {
   const { profile } = useAuth();
   const { colors } = useTheme();
 
@@ -30,6 +31,22 @@ export default function AgendaPage() {
   const [fichaModal, setFichaModal] = useState<{ open: boolean; reserva: any | null }>({ open: false, reserva: null });
   const [editingReserva, setEditingReserva] = useState<any>(null);
   const [horaSeleccionada, setHoraSeleccionada] = useState<string | null>(null);
+  const [cierreCajaOpen, setCierreCajaOpen] = useState(false);
+
+  // Acceso cliente
+  const [accesoModal, setAccesoModal] = useState<{
+    open: boolean;
+    clienteId: string;
+    clienteNombre: string;
+    clienteTelefono: string;
+  }>({ open: false, clienteId: '', clienteNombre: '', clienteTelefono: '' });
+
+  // Hora actual para indicador (se actualiza cada minuto)
+  const [horaActual, setHoraActual] = useState(new Date().getHours());
+  useEffect(() => {
+    const interval = setInterval(() => setHoraActual(new Date().getHours()), 60000);
+    return () => clearInterval(interval);
+  }, []);
 
   const cargarReservas = useCallback(async () => {
     setLoading(true);
@@ -45,6 +62,8 @@ export default function AgendaPage() {
       if (r.success && 'data' in r) setProfesionales(r.data || []);
     });
   }, [profile]);
+
+  const profesionalActual = profesionales.find(p => p.id === profile?.profesionalId);
 
   const diasSemana = Array.from({ length: 7 }, (_, i) => {
     const base = new Date(selectedDate + 'T12:00:00');
@@ -79,30 +98,54 @@ export default function AgendaPage() {
     cargarReservas();
   };
 
+  const handleNuevoClienteCreado = (clienteId: string, clienteNombre: string, clienteTelefono: string) => {
+    setAccesoModal({ open: true, clienteId, clienteNombre, clienteTelefono });
+  };
+
   const navFecha = (dir: number) => {
     const d = new Date(selectedDate + 'T12:00:00');
     d.setDate(d.getDate() + dir);
     setSelectedDate(d.toISOString().split('T')[0]);
   };
 
+  const getReservaStyle = (reserva: any) => {
+    if (reserva.estado === 'cancelada') {
+      return { background: '#f3f4f6', borderLeft: `4px solid #9ca3af` };
+    }
+    if (reserva.pagado) {
+      return { background: colors.primaryFaded, borderLeft: `4px solid ${colors.primary}` };
+    }
+    return { background: '#FFF3CD', borderLeft: `4px solid ${colors.warning}` };
+  };
+
+  const esHoySeleccionado = selectedDate === hoy;
+
   return (
     <div className="flex flex-col h-full">
       {/* Header */}
       <div className="px-6 pt-6 pb-4">
-        <div className="flex items-center justify-between mb-4">
-          <h1 className="text-2xl font-bold" style={{ color: colors.text }}>Agenda</h1>
+        <div className="flex items-center justify-between mb-1">
+          <div>
+            <h1 className="text-2xl font-bold" style={{ color: colors.text }}>Agenda</h1>
+            {profesionalActual && (
+              <p className="text-xs mt-0.5 lowercase" style={{ color: colors.textSecondary }}>
+                {profesionalActual.nombre_completo}
+              </p>
+            )}
+          </div>
           <button
-            onClick={() => handleNuevaReserva()}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg text-white text-sm font-medium"
-            style={{ background: colors.primary }}
+            onClick={() => setCierreCajaOpen(true)}
+            className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium transition hover:opacity-80"
+            style={{ background: colors.primaryFaded, color: colors.primary }}
+            title="Cerrar caja del día"
           >
-            <Plus size={16} />
-            Nueva reserva
+            <LockKeyhole size={14} />
+            cerrar caja
           </button>
         </div>
 
         {/* Navegación de días */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 mt-3">
           <button onClick={() => navFecha(-1)} className="p-1.5 rounded-lg hover:bg-gray-100 transition">
             <ChevronLeft size={20} style={{ color: colors.text }} />
           </button>
@@ -143,20 +186,34 @@ export default function AgendaPage() {
             {HORARIOS.map(hora => {
               const reserva = getReservaParaHora(hora);
               const horaLabel = `${hora.toString().padStart(2, '0')}:00`;
+              const mostrarLineaHora = esHoySeleccionado && horaActual === hora;
+
               return (
-                <div key={hora} className="flex items-stretch min-h-[56px]">
+                <div key={hora} className="flex items-stretch min-h-[56px] relative">
                   <span className="w-16 text-xs pt-2 shrink-0" style={{ color: colors.textMuted }}>{horaLabel}</span>
-                  <div className="flex-1 border-l pl-3" style={{ borderColor: colors.borderLight }}>
+                  <div className="flex-1 border-l pl-3 relative" style={{ borderColor: colors.borderLight }}>
+
+                    {/* Indicador de hora actual */}
+                    {mostrarLineaHora && (
+                      <div className="absolute -left-px top-0 right-0 flex items-center pointer-events-none z-10">
+                        <div className="w-2 h-2 rounded-full flex-shrink-0 -ml-1" style={{ background: '#ef4444' }} />
+                        <div className="flex-1 h-px" style={{ background: '#ef4444' }} />
+                      </div>
+                    )}
+
                     {reserva ? (
                       <div
                         className="rounded-xl px-4 py-3 cursor-pointer hover:opacity-90 transition"
-                        style={{ background: reserva.pagado ? colors.primaryFaded : '#FFF3CD', borderLeft: `4px solid ${reserva.pagado ? colors.primary : colors.warning}` }}
+                        style={getReservaStyle(reserva)}
                         onClick={() => handleEditarReserva(reserva)}
                       >
                         <div className="flex items-center justify-between">
                           <div>
-                            <p className="font-semibold text-sm" style={{ color: colors.text }}>
+                            <p className="font-semibold text-sm" style={{ color: reserva.estado === 'cancelada' ? '#6b7280' : colors.text }}>
                               {reserva.consultante_nombre || 'Sin nombre'}
+                              {reserva.estado === 'cancelada' && (
+                                <span className="ml-2 text-xs font-normal">(cancelada)</span>
+                              )}
                             </p>
                             <p className="text-xs mt-0.5" style={{ color: colors.textSecondary }}>
                               {reserva.hora_inicio?.substring(0, 5)} · {reserva.estado}
@@ -164,7 +221,7 @@ export default function AgendaPage() {
                               {reserva.precio_total ? ` · $${reserva.precio_total}` : ''}
                             </p>
                           </div>
-                          <div className="flex gap-2">
+                          <div className="flex gap-2 flex-wrap justify-end">
                             <button
                               className="flex items-center gap-1 text-xs px-3 py-1 rounded-lg"
                               style={{ background: colors.primaryFaded, color: colors.primary }}
@@ -173,13 +230,31 @@ export default function AgendaPage() {
                               <ClipboardList size={13} />
                               Ficha
                             </button>
-                            {!reserva.pagado && (
+                            {!reserva.pagado && reserva.estado !== 'cancelada' && (
                               <button
                                 className="text-xs px-3 py-1 rounded-lg"
                                 style={{ background: colors.primary, color: '#fff' }}
                                 onClick={e => { e.stopPropagation(); setPagoModal({ open: true, reserva }); }}
                               >
                                 Cobrar
+                              </button>
+                            )}
+                            {reserva.estado !== 'cancelada' && (reserva.consultante_id || reserva.cliente_id) && (
+                              <button
+                                className="text-xs px-3 py-1 rounded-lg"
+                                style={{ background: colors.primaryFaded, color: colors.primary }}
+                                title="Dar acceso a la app al cliente"
+                                onClick={e => {
+                                  e.stopPropagation();
+                                  setAccesoModal({
+                                    open: true,
+                                    clienteId: reserva.consultante_id || reserva.cliente_id,
+                                    clienteNombre: reserva.consultante_nombre || '',
+                                    clienteTelefono: reserva.consultante_telefono || '',
+                                  });
+                                }}
+                              >
+                                📱 App
                               </button>
                             )}
                             <button
@@ -207,11 +282,13 @@ export default function AgendaPage() {
         )}
       </div>
 
+      {/* Modales */}
       {modalOpen && (
         <ModalReserva
           open={modalOpen}
           onClose={() => setModalOpen(false)}
           onSaved={() => { setModalOpen(false); cargarReservas(); }}
+          onNuevoClienteCreado={handleNuevoClienteCreado}
           fecha={selectedDate}
           horaInicial={horaSeleccionada}
           reservaEditar={editingReserva}
@@ -236,6 +313,28 @@ export default function AgendaPage() {
           onClose={() => setFichaModal({ open: false, reserva: null })}
           onSaved={() => { setFichaModal({ open: false, reserva: null }); cargarReservas(); }}
           reserva={fichaModal.reserva}
+          profile={profile}
+        />
+      )}
+
+      {accesoModal.open && (
+        <ModalAccesoCliente
+          open={accesoModal.open}
+          onClose={() => setAccesoModal({ open: false, clienteId: '', clienteNombre: '', clienteTelefono: '' })}
+          clienteId={accesoModal.clienteId}
+          clienteNombre={accesoModal.clienteNombre}
+          clienteTelefono={accesoModal.clienteTelefono}
+          empresaId={profile?.empresaId || ''}
+        />
+      )}
+
+      {cierreCajaOpen && (
+        <ModalCierreCaja
+          open={cierreCajaOpen}
+          onClose={() => setCierreCajaOpen(false)}
+          onCajaActualizada={() => { setCierreCajaOpen(false); cargarReservas(); }}
+          fecha={selectedDate}
+          reservas={reservas}
           profile={profile}
         />
       )}
