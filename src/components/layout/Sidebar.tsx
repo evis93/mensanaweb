@@ -43,7 +43,7 @@ const ADMIN_NAV: NavItem[] = [
 const PROFESIONAL_NAV: NavItem[] = [
   { label: 'Agenda Diaria', href: '/profesional/agenda', icon: <Home size={18} /> },
   { label: 'Agenda mensual', href: '/profesional/agenda-mensual', icon: <CalendarRange size={18} /> },
-  { label: 'Gestión de Reservas', href: '/profesional/gestion-reservas', icon: <ClipboardList size={18} /> },
+  { label: 'Reservas', href: '/profesional/reservas', icon: <ClipboardList size={18} /> },
   { label: 'Horarios', href: '/profesional/horarios', icon: <Clock size={18} /> },
 ];
 

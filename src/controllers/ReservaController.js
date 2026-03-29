@@ -104,9 +104,9 @@ export class ReservaController {
     try {
       let query = supabase
         .from('reservas')
-        .select('fecha')
-        .gte('fecha', mesInicio)
-        .lte('fecha', mesFin);
+        .select('fecha_hora_inicio')
+        .gte('fecha_hora_inicio', mesInicio + 'T00:00:00')
+        .lte('fecha_hora_inicio', mesFin + 'T23:59:59');
 
       if (profesionalId) {
         query = query.eq('profesional_id', profesionalId);
@@ -116,9 +116,16 @@ export class ReservaController {
 
       if (error) throw error;
 
+      // Extraer fecha local AR (UTC-3) de cada timestamp
+      const AR_OFFSET_MS = -3 * 60 * 60 * 1000;
+      const mapped = (data || []).map(r => ({
+        fecha: new Date(new Date(r.fecha_hora_inicio).getTime() + AR_OFFSET_MS)
+          .toISOString().split('T')[0],
+      }));
+
       return {
         success: true,
-        data: data || [],
+        data: mapped,
       };
     } catch (error) {
       return {

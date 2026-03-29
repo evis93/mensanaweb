@@ -2,16 +2,11 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useTheme } from '@/src/context/ThemeContext';
-import { ReservaController } from '@/src/controllers/ReservaController';
 import { ConsultanteController } from '@/src/controllers/ConsultanteController';
 import { DatabaseService } from '@/src/services/database.service';
 import { X, Search, Loader2 } from 'lucide-react';
-
-const HORARIOS_DISPONIBLES = Array.from({ length: 27 }, (_, i) => {
-  const h = Math.floor(i / 2) + 8;
-  const m = i % 2 === 0 ? '00' : '30';
-  return `${h.toString().padStart(2, '0')}:${m}`;
-});
+import { calcularMontoSena } from '@/src/types/servicios';
+import type { Slot } from '@/src/types/disponibilidad';
 
 interface Props {
   open: boolean;
@@ -33,6 +28,8 @@ export default function ModalReserva({ open, onClose, onSaved, onNuevoClienteCre
   const [consultantesFiltrados, setConsultantesFiltrados] = useState<any[]>([]);
   const [isSearching, setIsSearching] = useState(false);
   const [tiposSesion, setTiposSesion] = useState<any[]>([]);
+  const [slots, setSlots] = useState<Slot[]>([]);
+  const [cargandoSlots, setCargandoSlots] = useState(false);
   const [guardando, setGuardando] = useState(false);
   const searchTimeout = useRef<any>(null);
 
@@ -86,6 +83,20 @@ export default function ModalReserva({ open, onClose, onSaved, onNuevoClienteCre
     });
   }, [profile?.empresaId]);
 
+  // Cargar slots reales cuando cambia profesional, servicio o fecha
+  useEffect(() => {
+    const { profesional_id, tipo_sesion_id } = form;
+    if (!profesional_id || !tipo_sesion_id || !fecha || !profile?.empresaId) {
+      setSlots([]);
+      return;
+    }
+    setCargandoSlots(true);
+    fetch(`/api/disponibilidad?profesionalId=${profesional_id}&empresaId=${profile.empresaId}&servicioId=${tipo_sesion_id}&fecha=${fecha}`)
+      .then(r => r.json())
+      .then(json => { if (json.success) setSlots(json.data.slots ?? []); })
+      .finally(() => setCargandoSlots(false));
+  }, [form.profesional_id, form.tipo_sesion_id, fecha, profile?.empresaId]);
+
   const buscarConsultante = (query: string) => {
     setConsultanteSearch(query);
     clearTimeout(searchTimeout.current);
@@ -104,54 +115,63 @@ export default function ModalReserva({ open, onClose, onSaved, onNuevoClienteCre
     setConsultantesFiltrados([]);
   };
 
+  const seleccionarServicio = (servicioId: string) => {
+    const s = tiposSesion.find(t => t.id === servicioId);
+    if (!s) { setForm(prev => ({ ...prev, tipo_sesion_id: null, precio_total: '', monto_seña: '' })); return; }
+    const monto = calcularMontoSena({ senaTipo: s.sena_tipo ?? 'monto', senaValor: s.sena_valor ?? 0, precio: s.precio ?? null });
+    setForm(prev => ({
+      ...prev,
+      tipo_sesion_id: servicioId,
+      precio_total:   s.precio?.toString() ?? '',
+      monto_seña:     monto > 0 ? monto.toString() : '',
+    }));
+  };
+
   const handleGuardar = async () => {
     if (!form.hora_inicio) { alert('Seleccioná la hora de inicio'); return; }
+    if (!form.tipo_sesion_id) { alert('Seleccioná un servicio'); return; }
     setGuardando(true);
 
-    let consultanteId = form.consultante_id;
-    if (!consultanteId && form.consultante_nombre) {
+    let clienteId = form.consultante_id;
+    if (!clienteId && form.consultante_nombre) {
       const r = await ConsultanteController.crearConsultante({
         nombre_completo: form.consultante_nombre,
         email: form.consultante_email,
         telefono: form.consultante_telefono,
       }, profile);
-      if (r.success) consultanteId = (r as any).data?.id;
+      if (r.success) clienteId = (r as any).data?.id;
     }
 
-    // Si la reserva es para un profesional distinto al usuario logueado → 'pendiente'
-    // para que pase por el gestor de reservas y el profesional confirme.
-    const esPropioTurno = form.profesional_id === profile?.profesionalId;
-    const estadoNuevo = reservaEditar ? reservaEditar.estado : (esPropioTurno ? 'confirmada' : 'pendiente');
+    if (!clienteId) { alert('Seleccioná o creá un cliente'); setGuardando(false); return; }
 
-    const reservaData = {
-      cliente_id: consultanteId,
-      consultante_id: consultanteId,
-      fecha,
-      hora_inicio: form.hora_inicio,
-      servicio_id: form.tipo_sesion_id,
-      precio_total: form.precio_total ? parseFloat(form.precio_total) : null,
-      monto_seña: form.monto_seña ? parseFloat(form.monto_seña) : null,
-      estado: estadoNuevo,
-    };
+    // fecha + hora_inicio en timezone local → ISO UTC para almacenar
+    const fechaHoraInicio = new Date(`${fecha}T${form.hora_inicio}:00`).toISOString();
 
-    const result = reservaEditar
-      ? await ReservaController.actualizarReserva(reservaEditar.id, reservaData, profile)
-      : await ReservaController.crearReserva(reservaData, form.profesional_id, profile);
+    const res = await fetch('/api/reservas', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        empresaId:      profile.empresaId,
+        clienteId,
+        profesionalId:  form.profesional_id,
+        servicioId:     form.tipo_sesion_id,
+        fechaHoraInicio,
+      }),
+    });
+    const json = await res.json();
 
     setGuardando(false);
-    if (result.success) {
-      // Si se creó un cliente nuevo, notificar al padre para ofrecer acceso a la app
-      const esClienteNuevo = !form.consultante_id && !!form.consultante_nombre && !!consultanteId;
-      if (!reservaEditar && esClienteNuevo && onNuevoClienteCreado) {
-        onNuevoClienteCreado(consultanteId, form.consultante_nombre, form.consultante_telefono);
+    if (json.success) {
+      const esClienteNuevo = !form.consultante_id && !!clienteId;
+      if (esClienteNuevo && onNuevoClienteCreado) {
+        onNuevoClienteCreado(clienteId, form.consultante_nombre, form.consultante_telefono);
       }
-      if (!esPropioTurno && !reservaEditar) {
-        // Avisar que fue al gestor
-        alert(`La reserva fue enviada al gestor de reservas para que ${profesionales.find(p => p.id === form.profesional_id)?.nombre_completo || 'el profesional'} la confirme.`);
+      if (form.profesional_id !== profile?.profesionalId) {
+        alert(`La reserva fue enviada al gestor para que ${profesionales.find(p => p.id === form.profesional_id)?.nombre_completo || 'el profesional'} la confirme.`);
       }
       onSaved();
     } else {
-      alert((result as any).error || 'Error al guardar');
+      alert(json.error || 'Error al guardar');
     }
   };
 
@@ -229,18 +249,62 @@ export default function ModalReserva({ open, onClose, onSaved, onNuevoClienteCre
             </div>
           )}
 
-          {/* Hora */}
+          {/* Tipo de sesión — movido antes de hora para cargar slots */}
+          {tiposSesion.length > 0 && (
+            <div>
+              <label className="block text-sm font-medium mb-1" style={{ color: colors.text }}>Tipo de sesión</label>
+              <select
+                value={form.tipo_sesion_id || ''}
+                onChange={e => seleccionarServicio(e.target.value)}
+                className="w-full px-3 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                style={{ borderColor: colors.border, color: colors.text }}
+              >
+                <option value="">Sin especificar</option>
+                {tiposSesion.map(t => (
+                  <option key={t.id} value={t.id}>
+                    {t.nombre}{t.duracion_minutos ? ` (${t.duracion_minutos} min)` : ''}{t.precio ? ` · $${t.precio}` : ''}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          {/* Hora — slots reales de disponibilidad */}
           <div>
-            <label className="block text-sm font-medium mb-1" style={{ color: colors.text }}>Hora de inicio *</label>
-            <select
-              value={form.hora_inicio}
-              onChange={e => setForm(prev => ({ ...prev, hora_inicio: e.target.value }))}
-              className="w-full px-3 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              style={{ borderColor: colors.border, color: colors.text }}
-            >
-              <option value="">Seleccionar hora</option>
-              {HORARIOS_DISPONIBLES.map(h => <option key={h} value={h}>{h}</option>)}
-            </select>
+            <label className="block text-sm font-medium mb-1" style={{ color: colors.text }}>
+              Hora de inicio *
+              {cargandoSlots && <span className="ml-2 text-xs font-normal" style={{ color: colors.textSecondary }}>Cargando disponibilidad...</span>}
+            </label>
+            {slots.length > 0 ? (
+              <div className="grid grid-cols-4 gap-1.5">
+                {slots.map(s => (
+                  <button
+                    key={s.horaInicio}
+                    type="button"
+                    disabled={!s.disponible}
+                    onClick={() => setForm(prev => ({ ...prev, hora_inicio: s.horaInicio }))}
+                    className="py-2 rounded-lg text-xs font-medium transition disabled:opacity-30 disabled:cursor-not-allowed"
+                    style={{
+                      background: form.hora_inicio === s.horaInicio ? colors.primary : s.disponible ? colors.primaryFaded : '#f3f4f6',
+                      color:      form.hora_inicio === s.horaInicio ? '#fff' : s.disponible ? colors.primary : '#9ca3af',
+                    }}
+                  >
+                    {s.horaInicio}
+                  </button>
+                ))}
+              </div>
+            ) : (
+              <select
+                value={form.hora_inicio}
+                onChange={e => setForm(prev => ({ ...prev, hora_inicio: e.target.value }))}
+                className="w-full px-3 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                style={{ borderColor: colors.border, color: colors.text }}
+              >
+                <option value="">
+                  {form.tipo_sesion_id ? 'Sin disponibilidad para este día' : 'Seleccioná un servicio primero'}
+                </option>
+              </select>
+            )}
           </div>
 
           {/* Profesional */}
@@ -254,22 +318,6 @@ export default function ModalReserva({ open, onClose, onSaved, onNuevoClienteCre
                 style={{ borderColor: colors.border, color: colors.text }}
               >
                 {profesionales.map(p => <option key={p.id} value={p.id}>{p.nombre_completo}</option>)}
-              </select>
-            </div>
-          )}
-
-          {/* Tipo de sesión */}
-          {tiposSesion.length > 0 && (
-            <div>
-              <label className="block text-sm font-medium mb-1" style={{ color: colors.text }}>Tipo de sesión</label>
-              <select
-                value={form.tipo_sesion_id || ''}
-                onChange={e => setForm(prev => ({ ...prev, tipo_sesion_id: e.target.value || null }))}
-                className="w-full px-3 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                style={{ borderColor: colors.border, color: colors.text }}
-              >
-                <option value="">Sin especificar</option>
-                {tiposSesion.map(t => <option key={t.id} value={t.id}>{t.nombre}{t.precio ? ` · $${t.precio}` : ''}</option>)}
               </select>
             </div>
           )}

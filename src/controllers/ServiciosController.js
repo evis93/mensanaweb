@@ -31,7 +31,7 @@ export class ServiciosController {
     if (empError) return empError;
 
     try {
-      const { nombre, descripcion, duracion_minutos, precio } = servicioData;
+      const { nombre, descripcion, duracion_minutos, precio, sena_tipo, sena_valor, modalidad } = servicioData;
       if (!nombre?.trim()) return { success: false, error: 'El nombre es obligatorio' };
 
       const { data, error } = await supabase
@@ -42,6 +42,9 @@ export class ServiciosController {
           descripcion: descripcion?.trim() || null,
           duracion_minutos: duracion_minutos ? parseInt(duracion_minutos) : null,
           precio: precio ? parseFloat(precio) : null,
+          sena_tipo: sena_tipo || 'monto',
+          sena_valor: sena_valor ? parseFloat(sena_valor) : 0,
+          modalidad: modalidad || 'presencial',
           activo: true,
         }])
         .select()
@@ -59,7 +62,7 @@ export class ServiciosController {
     if (permError) return permError;
 
     try {
-      const { nombre, descripcion, duracion_minutos, precio } = servicioData;
+      const { nombre, descripcion, duracion_minutos, precio, sena_tipo, sena_valor, modalidad } = servicioData;
       if (!nombre?.trim()) return { success: false, error: 'El nombre es obligatorio' };
 
       const { error } = await supabase
@@ -69,6 +72,9 @@ export class ServiciosController {
           descripcion: descripcion?.trim() || null,
           duracion_minutos: duracion_minutos ? parseInt(duracion_minutos) : null,
           precio: precio ? parseFloat(precio) : null,
+          sena_tipo: sena_tipo || 'monto',
+          sena_valor: sena_valor ? parseFloat(sena_valor) : 0,
+          modalidad: modalidad || 'presencial',
         })
         .eq('id', id);
 

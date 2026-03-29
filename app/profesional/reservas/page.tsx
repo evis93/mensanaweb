@@ -22,7 +22,7 @@ function formatearFechaHora(iso: string) {
   });
 }
 
-export default function GestionReservasPage() {
+export default function ReservasProfesionalPage() {
   const { profile } = useAuth();
   const { colors }  = useTheme();
 
@@ -31,13 +31,13 @@ export default function GestionReservasPage() {
   const [activeTab, setActiveTab] = useState(0);
 
   const cargar = useCallback(async () => {
-    if (!profile?.empresaId) return;
+    if (!profile?.usuarioId) return;
     setLoading(true);
-    const res  = await fetch(`/api/reservas?empresaId=${profile.empresaId}`);
+    const res  = await fetch(`/api/reservas?profesionalId=${profile.usuarioId}`);
     const json = await res.json();
     if (json.success) setReservas(json.data ?? []);
     setLoading(false);
-  }, [profile?.empresaId]);
+  }, [profile?.usuarioId]);
 
   useEffect(() => { cargar(); }, [cargar]);
 
@@ -54,7 +54,7 @@ export default function GestionReservasPage() {
   return (
     <div className="p-6">
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold" style={{ color: colors.text }}>Gestión de Reservas</h1>
+        <h1 className="text-2xl font-bold" style={{ color: colors.text }}>Mis Reservas</h1>
         <button onClick={cargar} className="p-2 rounded-lg hover:bg-gray-100 transition">
           <RefreshCw size={18} style={{ color: colors.textSecondary }} />
         </button>
@@ -108,12 +108,14 @@ export default function GestionReservasPage() {
                   <p className="text-sm mt-0.5" style={{ color: colors.textSecondary }}>
                     {r.servicio_nombre} · {formatearFechaHora(r.fecha_hora_inicio)}
                   </p>
-                  <p className="text-xs mt-0.5" style={{ color: colors.textSecondary }}>
-                    Prof: {r.profesional_nombre}
-                  </p>
                   {r.sena_monto > 0 && (
                     <p className="text-xs mt-0.5" style={{ color: colors.textSecondary }}>
-                      Seña: ${r.sena_monto} · {r.sena_estado}
+                      Seña: ${r.sena_monto} ({r.sena_estado})
+                    </p>
+                  )}
+                  {r.motivo_cambio && (
+                    <p className="text-xs mt-1 italic" style={{ color: colors.textSecondary }}>
+                      "{r.motivo_cambio}"
                     </p>
                   )}
                 </div>
@@ -122,18 +124,18 @@ export default function GestionReservasPage() {
 
               <AccionesReserva
                 reserva={{
-                  id:                  r.id,
-                  estado:              r.estado,
-                  clienteNombre:       r.cliente_nombre,
-                  clienteTelefono:     r.cliente_telefono,
-                  profesionalNombre:   r.profesional_nombre,
-                  profesionalTelefono: r.profesional_telefono,
-                  servicioNombre:      r.servicio_nombre,
-                  fechaHoraInicio:     r.fecha_hora_inicio,
-                  empresaSlug:         r.empresa_slug,
+                  id:                 r.id,
+                  estado:             r.estado,
+                  clienteNombre:      r.cliente_nombre,
+                  clienteTelefono:    r.cliente_telefono,
+                  profesionalNombre:  r.profesional_nombre,
+                  profesionalTelefono:r.profesional_telefono,
+                  servicioNombre:     r.servicio_nombre,
+                  fechaHoraInicio:    r.fecha_hora_inicio,
+                  empresaSlug:        r.empresa_slug,
                 }}
                 onActualizado={cargar}
-                modoProfesional={false}
+                modoProfesional
               />
             </div>
           ))}

@@ -4,6 +4,16 @@ import React, { createContext, useContext, useEffect, useRef, useState } from 'r
 import { supabase } from '../config/supabase';
 import type { Profile } from '../utils/permissions';
 
+export interface ActiveEmpresaData {
+  empresaId: string;
+  empresaNombre: string;
+  rol: string;
+  colorPrimario?: string;
+  colorSecundario?: string;
+  colorBackground?: string;
+  logoUrl?: string;
+}
+
 interface AuthContextType {
   session: any;
   user: any;
@@ -13,6 +23,7 @@ interface AuthContextType {
   register: (email: string, password: string, fullName: string, emailRedirectTo?: string) => Promise<{ success: boolean; error?: any; data?: any }>;
   logout: () => Promise<void>;
   changePassword: (email: string, currentPassword: string, newPassword: string) => Promise<{ success: boolean; error?: any; data?: any }>;
+  setActiveEmpresa: (data: ActiveEmpresaData) => void;
   rol: string | null;
   empresaId: string | null;
   isAdmin: boolean;
@@ -30,6 +41,7 @@ const AuthContext = createContext<AuthContextType>({
   register: async () => ({ success: false }),
   logout: async () => {},
   changePassword: async () => ({ success: false }),
+  setActiveEmpresa: () => {},
   rol: null,
   empresaId: null,
   isAdmin: false,
@@ -213,6 +225,29 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
+  // Permite que el selector de empresas o el router cambien la empresa activa
+  // sin hacer un nuevo fetch a la DB (los datos ya están en memoria)
+  const setActiveEmpresa = (data: ActiveEmpresaData) => {
+    setProfile(prev => {
+      if (!prev) return null;
+      const rol = data.rol;
+      return {
+        ...prev,
+        empresaId: data.empresaId,
+        empresaNombre: data.empresaNombre,
+        rol,
+        colorPrimario: data.colorPrimario ?? prev.colorPrimario,
+        colorSecundario: data.colorSecundario ?? prev.colorSecundario,
+        colorBackground: data.colorBackground ?? prev.colorBackground,
+        logoUrl: data.logoUrl ?? prev.logoUrl,
+        esAdmin: rol === 'admin' || rol === 'superadmin',
+        esProfesional: ['profesional', 'admin', 'superadmin'].includes(rol),
+        esCliente: rol === 'cliente',
+        esMensana: rol === 'superadmin',
+      };
+    });
+  };
+
   const changePassword = async (email: string, currentPassword: string, newPassword: string) => {
     setLoading(true);
     try {
@@ -240,6 +275,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         register,
         logout,
         changePassword,
+        setActiveEmpresa,
         rol: profile?.rol ?? null,
         empresaId: profile?.empresaId ?? null,
         isAdmin: profile?.esAdmin ?? false,

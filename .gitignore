@@ -3,6 +3,11 @@
 # dependencies
 DISEÑO/
 scripts/
+test/
+*.claude/
+*.next/
+_bmad/
+_bmad-output/
 
 
 # Expo

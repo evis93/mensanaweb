@@ -4,22 +4,16 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/src/context/AuthContext';
+import { usePostLoginRouter } from '@/src/hooks/usePostLoginRouter';
 
 export default function HomePage() {
   const { profile, loading } = useAuth();
-  const router = useRouter();
 
-  // Si hay sesión activa, ir al dashboard correspondiente
-  useEffect(() => {
-    if (loading || !profile) return;
-    if (profile.rol === 'superadmin') router.replace('/mensana');
-    else if (profile.rol === 'admin') router.replace('/admin');
-    else if (profile.rol === 'profesional') router.replace('/profesional');
-    else if (profile.rol === 'cliente') router.replace('/cliente');
-  }, [profile, loading, router]);
+  // Routing inteligente post-login según empresas y roles del usuario
+  const { resolving } = usePostLoginRouter();
 
-  // Mientras verifica sesión o está redirigiendo, mostrar spinner
-  if (loading || profile) {
+  // Mientras verifica sesión o está resolviendo destino, mostrar spinner
+  if (loading || resolving || profile) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-[#f8fbff]">
         <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-500" />

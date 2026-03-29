@@ -106,7 +106,7 @@ export async function POST(req: NextRequest) {
           if (authError.message.includes('already been registered') || authError.code === 'email_exists') {
             // El usuario existe en auth pero no está linkeado → buscar y linkear
             const { data: authList } = await sb.auth.admin.listUsers();
-            const existingAuthUser = authList?.users?.find(u => u.email === email.trim().toLowerCase());
+            const existingAuthUser = (authList?.users ?? []).find((u: any) => u.email === email.trim().toLowerCase());
             if (!existingAuthUser) {
               return NextResponse.json({ error: 'Email ya registrado en autenticación' }, { status: 409 });
             }
